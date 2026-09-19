@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+*/node_modules/
+*/*/node_modules/
+venv/
+*/venv/
+*/*/venv/
+.venv/
+*/.venv/
+
+# Build outputs & binaries
+dist/
+*/dist/
+build/
+*/build/
+.next/
+*/.next/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Terraform
+.terraform/
+*/.terraform/
+*/*/.terraform/
+*.tfstate
+*.tfstate.*
+
+# Python cache & artifacts
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sh205-fastapi-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - SUPABASE_URL=https://fqriuhhjoqfximtqssrw.supabase.co
+      - SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZxcml1aGhqb3FmeGltdHFzc3J3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg2OTYwNzIsImV4cCI6MjEwNDI3MjA3Mn0.3HXDzMJ7dWx8Eo3zICcK0yHGokYJbk3dHr_5_xAtaaY
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sh205-next-frontend
+    ports:
+      - "3000:3000"
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped

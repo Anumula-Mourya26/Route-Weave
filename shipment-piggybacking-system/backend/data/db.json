@@ -1,0 +1,185 @@
+{
+  "hubs": [
+    {
+      "id": "HUB-CHICAGO",
+      "name": "Central Great Lakes Hub (Chicago, IL)",
+      "location_coordinates": [
+        41.8781,
+        -87.6298
+      ]
+    },
+    {
+      "id": "HUB-MILWAUKEE",
+      "name": "Midwest North Sorting Hub (Milwaukee, WI)",
+      "location_coordinates": [
+        43.0389,
+        -87.9065
+      ]
+    },
+    {
+      "id": "HUB-INDIANAPOLIS",
+      "name": "Cross-Dock Gateway (Indianapolis, IN)",
+      "location_coordinates": [
+        39.7684,
+        -86.1581
+      ]
+    },
+    {
+      "id": "HUB-DETROIT",
+      "name": "Motor City Distribution Center (Detroit, MI)",
+      "location_coordinates": [
+        42.3314,
+        -83.0458
+      ]
+    },
+    {
+      "id": "HUB-CLEVELAND",
+      "name": "Great Lakes East Transit Center (Cleveland, OH)",
+      "location_coordinates": [
+        41.4993,
+        -81.6944
+      ]
+    }
+  ],
+  "active_routes": [
+    {
+      "id": "VEH-LINEHAUL-501",
+      "current_location": "HUB-INDIANAPOLIS",
+      "destination": "HUB-CHICAGO",
+      "available_capacity": 1205,
+      "cost_per_km": 1.65,
+      "average_speed_kmh": 70
+    },
+    {
+      "id": "VEH-REGIONAL-302",
+      "current_location": "HUB-MILWAUKEE",
+      "destination": "HUB-CHICAGO",
+      "available_capacity": 550,
+      "cost_per_km": 1.4,
+      "average_speed_kmh": 65
+    },
+    {
+      "id": "VEH-INTERSTATE-707",
+      "current_location": "HUB-DETROIT",
+      "destination": "HUB-CLEVELAND",
+      "available_capacity": 900,
+      "cost_per_km": 1.85,
+      "average_speed_kmh": 75
+    }
+  ],
+  "shipments": [
+    {
+      "id": "SHP-1001",
+      "item_name": "Critical Cardiac Diagnostic Sensors",
+      "origin": "HUB-MILWAUKEE",
+      "destination": "HUB-CHICAGO",
+      "current_hub": "HUB-INDIANAPOLIS",
+      "expected_route": [
+        "HUB-INDIANAPOLIS",
+        "HUB-CHICAGO"
+      ],
+      "weight": 195,
+      "deadline": 5,
+      "priority": "CRITICAL",
+      "is_misplaced": false,
+      "recovery_strategies": [],
+      "last_event": "PIGGYBACK AUTHORIZED: Dispatched onto carrier run VEH-LINEHAUL-501. Staged for loading.",
+      "current_coordinates": [
+        39.7684,
+        -86.1581
+      ],
+      "last_updated": "2026-09-18T14:10:31.127Z",
+      "assigned_route": "VEH-LINEHAUL-501",
+      "recovery_status": "PIGGYBACK_DISPATCHED"
+    },
+    {
+      "id": "SHP-1002",
+      "item_name": "Automotive Precision Machined Bearings",
+      "origin": "HUB-INDIANAPOLIS",
+      "destination": "HUB-DETROIT",
+      "current_hub": "HUB-INDIANAPOLIS",
+      "expected_route": [
+        "HUB-INDIANAPOLIS",
+        "HUB-DETROIT"
+      ],
+      "weight": 420,
+      "deadline": 8,
+      "priority": "HIGH",
+      "is_misplaced": false,
+      "recovery_strategies": []
+    }
+  ],
+  "sla_audit_logs": [
+    {
+      "shipment_id": "SHP-1001",
+      "route_id": "VEH-LINEHAUL-501",
+      "origin_hub": "HUB-INDIANAPOLIS",
+      "destination_hub": "HUB-CHICAGO",
+      "shipment_weight": 195,
+      "sla_deadline_hours": 5,
+      "estimated_transit_hours": 4.32,
+      "sla_met": true,
+      "dedicated_cost": 1126.84,
+      "piggyback_cost": 139.74,
+      "cost_saved": 987.1,
+      "savings_percentage": 88,
+      "id": "AUDIT-1789740631131-967",
+      "recorded_at": "2026-09-18T14:10:31.131Z"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "INC-1789740631106-278",
+      "shipment_id": "SHP-1001",
+      "detection_timestamp": "2026-09-18T14:10:31.106Z",
+      "resolution_timestamp": "2026-09-18T14:10:31.136Z",
+      "coordinates": [
+        39.7684,
+        -86.1581
+      ],
+      "deviation_km": 265.26,
+      "nearest_hub": "HUB-INDIANAPOLIS",
+      "priority": "CRITICAL",
+      "status": "RESOLVED",
+      "candidate_routes": [
+        {
+          "route_id": "VEH-LINEHAUL-501",
+          "carrier": "VEH-LINEHAUL-501",
+          "transit_hours": 4.32,
+          "deadline_hours": 5,
+          "cost": 139.74,
+          "status": "VIABLE",
+          "meets_deadline": true
+        },
+        {
+          "route_id": "VEH-INTERSTATE-707",
+          "carrier": "VEH-INTERSTATE-707",
+          "transit_hours": 0,
+          "deadline_hours": 5,
+          "cost": 2151.24,
+          "status": "VIABLE",
+          "meets_deadline": true
+        },
+        {
+          "route_id": "VEH-REGIONAL-302",
+          "carrier": "VEH-REGIONAL-302",
+          "transit_hours": 11.52,
+          "deadline_hours": 5,
+          "cost": 879.47,
+          "status": "EXCEEDS_DEADLINE",
+          "meets_deadline": false
+        }
+      ],
+      "selected_route": "VEH-LINEHAUL-501",
+      "sla_met": true,
+      "sla_status": "SLA Met",
+      "financial_impact": {
+        "dedicated_recovery_cost": 1126.84,
+        "piggyback_cost": 139.74,
+        "cost_saved": 987.1
+      },
+      "created_at": "2026-09-18T14:10:31.106Z",
+      "updated_at": "2026-09-18T14:10:31.136Z"
+    }
+  ]
+}

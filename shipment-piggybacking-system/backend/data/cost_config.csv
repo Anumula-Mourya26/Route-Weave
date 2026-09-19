@@ -1,0 +1,26 @@
+Cost_ID,Cost_Type,Category,Value_INR,Unit,Description
+C001,Fuel_Cost,Transport,18,per_km,Diesel cost per km for trucks
+C002,Driver_Cost,Transport,5,per_km,Driver wages per km
+C003,Toll_Cost,Transport,0.8,per_km,Average toll per km
+C004,Maintenance,Transport,3,per_km,Vehicle maintenance per km
+C005,Handling_Cost,Loading,2,per_kg,Loading and unloading per kg
+C006,Hub_Transfer,Transfer,500,per_transfer,Cost of moving shipment between trucks at hub
+C007,Detour_Cost,Recovery,25,per_km,Extra cost for detour beyond planned route
+C008,Emergency_Vehicle,Recovery,35,per_km,Cost of dedicated emergency recovery vehicle
+C009,Dedicated_Trip_Premium,Recovery,1.5,multiplier,Premium multiplier for dedicated recovery trip
+C010,Delay_Penalty_Critical,Penalty,500,per_hour,Penalty for critical shipment delay
+C011,Delay_Penalty_High,Penalty,300,per_hour,Penalty for high priority delay
+C012,Delay_Penalty_Medium,Penalty,150,per_hour,Penalty for medium priority delay
+C013,Delay_Penalty_Low,Penalty,50,per_hour,Penalty for low priority delay
+C014,Carbon_Credit,Environmental,2,per_kg_CO2,Carbon credit value
+C015,Carbon_Emission_Factor,Environmental,0.12,kg_CO2_per_km,CO2 emitted per km
+C016,Storage_Cost,Hub,5,per_ton_per_day,Hub storage cost
+C017,Insurance_Cost,Transport,0.5,per_km,Shipment insurance
+C018,Loading_Time,Time,0.5,hours,Time to load at pickup
+C019,Unloading_Time,Time,0.5,hours,Time to unload at delivery
+C020,Transfer_Time,Time,1.0,hours,Time for hub transfer
+C021,Driver_Incentive,Incentive,80,per_recovery,Driver incentive for accepting piggyback
+C022,Dispatcher_Fee,Operations,50,per_plan,Cost per recovery plan generated
+C023,API_Call_Cost,System,0.01,per_call,External API cost
+C024,Cloud_Compute,System,0.05,per_minute,Cloud compute cost
+C025,Minimum_Detour_Threshold,Constraint,5,km,Minimum detour worth executing

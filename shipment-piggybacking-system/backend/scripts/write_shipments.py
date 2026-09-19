@@ -1,0 +1,209 @@
+import os
+
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+
+SHIPMENTS_DATA = """Shipment_ID,Shipper,Origin_Hub,Destination_Hub,Current_Hub,Weight_kg,Priority,Deadline,Status,Shipment_Type,Anomaly_Flag,Deviation_KM
+SH001,Flipkart,H01,H02,H02,3500,High,2026-09-19T18:00,Delivered,Electronics,No,0
+SH002,Amazon,H06,H08,H04,5000,Medium,2026-09-20T12:00,In_Transit,Raw_Materials,No,0
+SH003,Reliance,H01,H02,H07,2000,High,2026-09-19T20:00,Misplaced,Office_Supplies,Yes,93.4
+SH004,Tata Motors,H01,H02,H05,4500,Critical,2026-09-19T22:00,Misplaced,Electronics,Yes,203.7
+SH005,Zomato,H06,H04,H05,3000,Medium,2026-09-20T18:00,In_Transit,Packaging,No,0
+SH006,Swiggy,H01,H03,H03,4000,High,2026-09-20T15:00,Delivered,MRO,No,0
+SH007,Blinkit,H02,H01,H01,2500,Critical,2026-09-18T20:00,Delivered,Electronics,No,0
+SH008,DMart,H04,H08,H08,6000,High,2026-09-19T18:00,Delivered,Raw_Materials,No,0
+SH009,Flipkart,H03,H01,H18,3000,Critical,2026-09-19T20:00,Misplaced,Office_Supplies,Yes,145.6
+SH010,Amazon,H01,H05,H05,1500,Low,2026-09-18T22:00,Delivered,Packaging,No,0
+SH011,Reliance,H05,H02,H05,5500,Medium,2026-09-19T22:00,In_Transit,Raw_Materials,No,0
+SH012,Tata Motors,H06,H01,H01,4000,Critical,2026-09-18T20:00,Delivered,Electronics,No,0
+SH013,Zomato,H07,H02,H02,2000,Medium,2026-09-19T20:00,Delivered,MRO,No,0
+SH014,Swiggy,H01,H08,H08,7000,High,2026-09-20T18:00,Delivered,Raw_Materials,No,0
+SH015,Blinkit,H04,H03,H03,3500,Medium,2026-09-20T15:00,In_Transit,Office_Supplies,No,0
+SH016,DMart,H01,H02,H02,2500,Low,2026-09-19T18:00,Delivered,Packaging,No,0
+SH017,Flipkart,H03,H04,H11,4000,High,2026-09-19T20:00,Misplaced,Electronics,Yes,109.0
+SH018,Amazon,H02,H05,H05,5000,Medium,2026-09-19T22:00,Delivered,Raw_Materials,No,0
+SH019,Reliance,H01,H06,H06,3000,Critical,2026-09-18T20:00,Delivered,Office_Supplies,No,0
+SH020,Tata Motors,H08,H01,H01,6500,High,2026-09-20T18:00,Delivered,Electronics,No,0
+SH021,Zomato,H05,H07,H07,2000,Low,2026-09-19T20:00,In_Transit,Packaging,No,0
+SH022,Swiggy,H01,H02,H02,4500,Medium,2026-09-19T18:00,Delivered,MRO,No,0
+SH023,Blinkit,H07,H01,H16,3500,Critical,2026-09-19T20:00,Misplaced,Raw_Materials,Yes,81.2
+SH024,DMart,H04,H08,H08,5500,High,2026-09-19T18:00,Delivered,Electronics,No,0
+SH025,Flipkart,H01,H03,H03,3000,Medium,2026-09-19T20:00,Delivered,Office_Supplies,No,0
+SH026,Amazon,H02,H01,H01,2500,Low,2026-09-18T22:00,Delivered,Packaging,No,0
+SH027,Reliance,H03,H02,H02,6000,High,2026-09-20T15:00,In_Transit,Raw_Materials,No,0
+SH028,Tata Motors,H01,H05,H05,4000,Critical,2026-09-18T20:00,Delivered,Electronics,No,0
+SH029,Zomato,H06,H03,H03,3500,Medium,2026-09-20T18:00,In_Transit,MRO,No,0
+SH030,Swiggy,H02,H08,H08,4500,High,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH031,Blinkit,H01,H07,H07,1500,Low,2026-09-18T20:00,Delivered,Packaging,No,0
+SH032,DMart,H04,H01,H01,5000,Medium,2026-09-19T18:00,Delivered,Raw_Materials,No,0
+SH033,Flipkart,H03,H08,H08,7000,High,2026-09-20T18:00,Delivered,Electronics,No,0
+SH034,Amazon,H01,H02,H02,3000,Medium,2026-09-19T18:00,Delivered,MRO,No,0
+SH035,Reliance,H05,H01,H16,2500,High,2026-09-19T20:00,Misplaced,Packaging,Yes,171.7
+SH036,Tata Motors,H07,H04,H04,4000,Medium,2026-09-19T20:00,In_Transit,Raw_Materials,No,0
+SH037,Zomato,H01,H06,H06,2000,Low,2026-09-18T22:00,Delivered,Packaging,No,0
+SH038,Swiggy,H02,H03,H03,5500,High,2026-09-20T15:00,In_Transit,Electronics,No,0
+SH039,Blinkit,H08,H01,H01,4000,Critical,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH040,DMart,H01,H04,H04,3500,Medium,2026-09-19T20:00,Pending,MRO,No,0
+SH041,Flipkart,H03,H02,H02,6500,High,2026-09-20T18:00,In_Transit,Raw_Materials,No,0
+SH042,Amazon,H05,H08,H08,5000,Medium,2026-09-19T18:00,Delivered,Electronics,No,0
+SH043,Reliance,H01,H02,H07,3000,Critical,2026-09-19T20:00,Misplaced,Packaging,Yes,93.4
+SH044,Tata Motors,H06,H05,H05,4500,High,2026-09-20T15:00,In_Transit,Office_Supplies,No,0
+SH045,Zomato,H04,H03,H03,5500,Medium,2026-09-19T20:00,Delivered,Raw_Materials,No,0
+SH046,Swiggy,H01,H07,H07,2500,Low,2026-09-18T22:00,Delivered,MRO,No,0
+SH047,Blinkit,H02,H01,H01,3500,High,2026-09-19T18:00,Delivered,Electronics,No,0
+SH048,DMart,H08,H04,H04,4000,Medium,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH049,Flipkart,H01,H08,H08,7500,High,2026-09-20T18:00,Delivered,Raw_Materials,No,0
+SH050,Amazon,H03,H01,H18,2000,High,2026-09-19T20:00,Misplaced,Packaging,Yes,145.6
+SH051,Reliance,H05,H02,H02,3000,Medium,2026-09-19T22:00,Delivered,Electronics,No,0
+SH052,Tata Motors,H01,H06,H06,4500,High,2026-09-18T20:00,Delivered,MRO,No,0
+SH053,Zomato,H04,H08,H08,6000,Critical,2026-09-20T18:00,In_Transit,Raw_Materials,No,0
+SH054,Swiggy,H07,H01,H01,2000,Low,2026-09-18T22:00,Delivered,Office_Supplies,No,0
+SH055,Blinkit,H01,H02,H02,3500,Medium,2026-09-19T18:00,Delivered,Packaging,No,0
+SH056,DMart,H02,H03,H10,5000,High,2026-09-19T20:00,Misplaced,Electronics,Yes,99.8
+SH057,Flipkart,H06,H05,H05,4000,Medium,2026-09-19T22:00,Delivered,Raw_Materials,No,0
+SH058,Amazon,H01,H04,H04,3000,High,2026-09-19T20:00,In_Transit,Office_Supplies,No,0
+SH059,Reliance,H03,H08,H08,5500,Medium,2026-09-20T18:00,Delivered,MRO,No,0
+SH060,Tata Motors,H05,H01,H01,2500,Low,2026-09-18T22:00,Delivered,Packaging,No,0
+SH061,Zomato,H01,H02,H02,6500,High,2026-09-19T18:00,Delivered,Raw_Materials,No,0
+SH062,Swiggy,H04,H01,H01,3000,Critical,2026-09-18T20:00,Delivered,Electronics,No,0
+SH063,Blinkit,H08,H02,H02,4500,Medium,2026-09-19T22:00,Delivered,Office_Supplies,No,0
+SH064,DMart,H01,H03,H03,5000,High,2026-09-20T18:00,In_Transit,MRO,No,0
+SH065,Flipkart,H07,H04,H10,2500,Critical,2026-09-19T20:00,Misplaced,Packaging,Yes,155.3
+SH066,Amazon,H06,H08,H08,6000,High,2026-09-19T18:00,Delivered,Raw_Materials,No,0
+SH067,Reliance,H01,H05,H05,3500,Medium,2026-09-19T20:00,Delivered,Electronics,No,0
+SH068,Tata Motors,H02,H07,H07,4000,High,2026-09-19T22:00,In_Transit,Office_Supplies,No,0
+SH069,Zomato,H03,H01,H01,2000,Low,2026-09-18T22:00,Delivered,MRO,No,0
+SH070,Swiggy,H04,H02,H02,5500,Medium,2026-09-19T18:00,Delivered,Packaging,No,0
+SH071,Blinkit,H01,H08,H08,7000,High,2026-09-20T18:00,Delivered,Raw_Materials,No,0
+SH072,DMart,H05,H06,H06,4500,Medium,2026-09-20T12:00,In_Transit,Electronics,No,0
+SH073,Flipkart,H01,H02,H02,3000,Low,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH074,Amazon,H07,H03,H10,5000,High,2026-09-19T20:00,Misplaced,MRO,Yes,155.3
+SH075,Reliance,H02,H08,H08,3500,Medium,2026-09-19T18:00,Delivered,Packaging,No,0
+SH076,Tata Motors,H01,H04,H04,6000,High,2026-09-19T20:00,Delivered,Raw_Materials,No,0
+SH077,Zomato,H06,H01,H01,4000,Critical,2026-09-18T20:00,Delivered,Electronics,No,0
+SH078,Swiggy,H04,H05,H05,2500,Medium,2026-09-20T15:00,In_Transit,Office_Supplies,No,0
+SH079,Blinkit,H08,H01,H01,5500,High,2026-09-19T18:00,Delivered,MRO,No,0
+SH080,DMart,H01,H02,H07,3000,Critical,2026-09-19T20:00,Misplaced,Packaging,Yes,93.4
+SH081,Flipkart,H03,H04,H04,4500,High,2026-09-19T18:00,Delivered,Raw_Materials,No,0
+SH082,Amazon,H05,H02,H02,3500,Medium,2026-09-19T20:00,Delivered,Electronics,No,0
+SH083,Reliance,H01,H06,H06,4000,High,2026-09-19T18:00,In_Transit,Office_Supplies,No,0
+SH084,Tata Motors,H02,H03,H03,5000,Medium,2026-09-19T20:00,Delivered,MRO,No,0
+SH085,Zomato,H07,H08,H04,3500,Critical,2026-09-20T18:00,Misplaced,Packaging,Yes,192.8
+SH086,Swiggy,H01,H05,H05,6500,High,2026-09-19T18:00,In_Transit,Raw_Materials,No,0
+SH087,Blinkit,H06,H02,H02,2000,High,2026-09-19T20:00,Delivered,Electronics,No,0
+SH088,DMart,H04,H01,H01,3000,Medium,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH089,Flipkart,H01,H08,H08,7000,High,2026-09-20T18:00,Delivered,MRO,No,0
+SH090,Amazon,H03,H07,H07,4500,Medium,2026-09-19T20:00,In_Transit,Packaging,No,0
+SH091,Reliance,H05,H01,H16,3500,Critical,2026-09-19T20:00,Misplaced,Raw_Materials,Yes,171.7
+SH092,Tata Motors,H02,H04,H04,5000,High,2026-09-19T18:00,Delivered,Electronics,No,0
+SH093,Zomato,H01,H02,H02,2500,Low,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH094,Swiggy,H08,H06,H06,6000,Medium,2026-09-20T18:00,Delivered,MRO,No,0
+SH095,Blinkit,H07,H01,H01,3000,High,2026-09-18T22:00,Delivered,Raw_Materials,No,0
+SH096,DMart,H01,H03,H03,4500,Medium,2026-09-19T20:00,Delivered,Packaging,No,0
+SH097,Flipkart,H04,H02,H02,5500,High,2026-09-19T18:00,In_Transit,Electronics,No,0
+SH098,Amazon,H05,H07,H14,2500,High,2026-09-19T20:00,Misplaced,Office_Supplies,Yes,72.1
+SH099,Reliance,H06,H08,H08,6500,Medium,2026-09-20T18:00,Delivered,MRO,No,0
+SH100,Tata Motors,H02,H01,H01,3500,Critical,2026-09-18T20:00,Delivered,Raw_Materials,No,0
+SH101,Zomato,H03,H02,H02,4000,High,2026-09-19T20:00,In_Transit,Packaging,No,0
+SH102,Swiggy,H01,H08,H08,5000,Medium,2026-09-20T18:00,Delivered,Electronics,No,0
+SH103,Blinkit,H05,H04,H02,3000,High,2026-09-19T20:00,Misplaced,Office_Supplies,Yes,115.0
+SH104,DMart,H01,H02,H02,4500,High,2026-09-18T20:00,Delivered,MRO,No,0
+SH105,Flipkart,H07,H03,H03,6000,Medium,2026-09-20T15:00,In_Transit,Raw_Materials,No,0
+SH106,Amazon,H04,H01,H01,3500,Critical,2026-09-18T20:00,Delivered,Electronics,No,0
+SH107,Reliance,H01,H06,H06,2500,Low,2026-09-19T22:00,Delivered,Packaging,No,0
+SH108,Tata Motors,H08,H02,H08,5500,Medium,2026-09-19T20:00,In_Transit,Office_Supplies,No,0
+SH109,Zomato,H02,H05,H05,4000,High,2026-09-20T15:00,Delivered,MRO,No,0
+SH110,Swiggy,H01,H04,H04,5000,Medium,2026-09-19T20:00,In_Transit,Raw_Materials,No,0
+SH111,Blinkit,H03,H01,H01,3000,Critical,2026-09-18T20:00,Delivered,Electronics,No,0
+SH112,DMart,H05,H08,H08,4500,High,2026-09-20T18:00,In_Transit,Packaging,No,0
+SH113,Flipkart,H01,H07,H07,2000,Low,2026-09-19T20:00,Delivered,Office_Supplies,No,0
+SH114,Amazon,H06,H02,H02,6000,Medium,2026-09-19T18:00,Delivered,Raw_Materials,No,0
+SH115,Reliance,H04,H08,H11,5500,High,2026-09-20T18:00,Misplaced,Electronics,Yes,57.1
+SH116,Tata Motors,H01,H02,H02,3500,High,2026-09-18T20:00,Delivered,Office_Supplies,No,0
+SH117,Zomato,H03,H05,H05,4000,Medium,2026-09-20T15:00,In_Transit,MRO,No,0
+SH118,Swiggy,H02,H01,H01,2500,Low,2026-09-19T18:00,Delivered,Packaging,No,0
+SH119,Blinkit,H08,H03,H03,5000,Medium,2026-09-20T18:00,Delivered,Raw_Materials,No,0
+SH120,DMart,H01,H06,H06,4500,High,2026-09-19T20:00,Delivered,Electronics,No,0
+SH121,Flipkart,H05,H02,H05,3500,Medium,2026-09-19T18:00,In_Transit,Office_Supplies,No,0
+SH122,Amazon,H01,H04,H04,4000,Critical,2026-09-18T20:00,Delivered,MRO,No,0
+SH123,Reliance,H07,H08,H04,3000,High,2026-09-19T20:00,Misplaced,Packaging,Yes,192.8
+SH124,Tata Motors,H02,H06,H06,5500,Medium,2026-09-20T18:00,In_Transit,Raw_Materials,No,0
+SH125,Zomato,H01,H02,H02,2500,High,2026-09-19T18:00,Delivered,Electronics,No,0
+SH126,Swiggy,H04,H03,H03,5000,Medium,2026-09-19T20:00,In_Transit,Office_Supplies,No,0
+SH127,Blinkit,H01,H08,H08,6500,High,2026-09-20T18:00,Delivered,MRO,No,0
+SH128,DMart,H06,H01,H01,4000,Medium,2026-09-18T20:00,Delivered,Packaging,No,0
+SH129,Flipkart,H03,H04,H04,3500,Critical,2026-09-19T20:00,In_Transit,Raw_Materials,No,0
+SH130,Amazon,H01,H05,H05,5500,High,2026-09-20T18:00,Delivered,Electronics,No,0
+SH131,Reliance,H05,H07,H07,3000,Medium,2026-09-19T20:00,In_Transit,Office_Supplies,No,0
+SH132,Tata Motors,H08,H02,H04,4500,High,2026-09-20T15:00,Misplaced,Packaging,Yes,195.0
+SH133,Zomato,H02,H05,H05,4000,Critical,2026-09-18T20:00,Delivered,MRO,No,0
+SH134,Swiggy,H01,H03,H03,5000,Medium,2026-09-19T20:00,In_Transit,Raw_Materials,No,0
+SH135,Blinkit,H04,H08,H08,6000,High,2026-09-20T18:00,Delivered,Electronics,No,0
+SH136,DMart,H07,H02,H14,3500,Medium,2026-09-19T18:00,Misplaced,Office_Supplies,Yes,48.1
+SH137,Flipkart,H01,H04,H04,4000,High,2026-09-19T20:00,In_Transit,MRO,No,0
+SH138,Amazon,H06,H08,H08,5500,Medium,2026-09-20T18:00,Delivered,Packaging,No,0
+SH139,Reliance,H03,H01,H18,2500,Critical,2026-09-19T20:00,Misplaced,Raw_Materials,Yes,145.6
+SH140,Tata Motors,H01,H05,H05,4500,High,2026-09-19T18:00,In_Transit,Electronics,No,0
+SH141,Zomato,H02,H07,H07,3000,Medium,2026-09-19T20:00,Delivered,Office_Supplies,No,0
+SH142,Swiggy,H05,H04,H04,5000,High,2026-09-20T15:00,In_Transit,MRO,No,0
+SH143,Blinkit,H01,H08,H08,6500,Critical,2026-09-19T18:00,In_Transit,Raw_Materials,No,0
+SH144,DMart,H07,H01,H01,4000,Medium,2026-09-18T22:00,Delivered,Packaging,No,0
+SH145,Flipkart,H06,H05,H05,3500,High,2026-09-20T18:00,In_Transit,Electronics,No,0
+SH146,Amazon,H01,H03,H03,5000,Medium,2026-09-19T20:00,In_Transit,Office_Supplies,No,0
+SH147,Reliance,H02,H08,H08,5500,High,2026-09-19T18:00,Delivered,MRO,No,0
+SH148,Tata Motors,H04,H05,H05,3000,Medium,2026-09-20T12:00,In_Transit,Raw_Materials,No,0
+SH149,Zomato,H01,H02,H07,2500,Critical,2026-09-19T20:00,Misplaced,Packaging,Yes,93.4
+SH150,Swiggy,H03,H07,H07,4500,High,2026-09-19T18:00,Delivered,Electronics,No,0
+SH151,Blinkit,H08,H06,H06,6000,Medium,2026-09-20T18:00,In_Transit,Office_Supplies,No,0
+SH152,DMart,H01,H02,H02,3500,Critical,2026-09-18T20:00,Delivered,MRO,No,0
+SH153,Flipkart,H05,H03,H03,4000,High,2026-09-19T20:00,In_Transit,Raw_Materials,No,0
+SH154,Amazon,H02,H01,H01,2500,Low,2026-09-18T22:00,Delivered,Packaging,No,0
+SH155,Reliance,H01,H04,H07,5500,Medium,2026-09-20T15:00,Misplaced,Electronics,Yes,95.8
+SH156,Tata Motors,H04,H01,H01,4500,High,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH157,Zomato,H03,H05,H05,3000,Medium,2026-09-20T15:00,In_Transit,MRO,No,0
+SH158,Swiggy,H01,H08,H08,7000,High,2026-09-20T18:00,Delivered,Raw_Materials,No,0
+SH159,Blinkit,H06,H03,H03,3500,Critical,2026-09-19T20:00,In_Transit,Packaging,No,0
+SH160,DMart,H02,H05,H05,5000,Medium,2026-09-19T18:00,Delivered,Electronics,No,0
+SH161,Flipkart,H01,H06,H06,4000,High,2026-09-19T20:00,In_Transit,Office_Supplies,No,0
+SH162,Amazon,H07,H04,H10,3000,Critical,2026-09-20T18:00,Misplaced,MRO,Yes,155.3
+SH163,Reliance,H05,H02,H02,4500,Medium,2026-09-19T18:00,Delivered,Packaging,No,0
+SH164,Tata Motors,H01,H08,H08,6000,High,2026-09-20T18:00,In_Transit,Raw_Materials,No,0
+SH165,Zomato,H03,H02,H02,3500,Medium,2026-09-19T20:00,In_Transit,Electronics,No,0
+SH166,Swiggy,H08,H05,H02,4000,High,2026-09-20T15:00,Misplaced,Office_Supplies,Yes,273.9
+SH167,Blinkit,H01,H07,H07,2000,Low,2026-09-18T22:00,Delivered,Packaging,No,0
+SH168,DMart,H04,H02,H02,5000,Medium,2026-09-19T20:00,In_Transit,MRO,No,0
+SH169,Flipkart,H01,H03,H03,3000,High,2026-09-19T18:00,Delivered,Raw_Materials,No,0
+SH170,Amazon,H06,H01,H21,4500,Medium,2026-09-19T18:00,Misplaced,Electronics,Yes,54.7
+SH171,Reliance,H02,H06,H06,5500,High,2026-09-20T15:00,In_Transit,Office_Supplies,No,0
+SH172,Tata Motors,H05,H08,H05,3500,Medium,2026-09-20T18:00,In_Transit,MRO,No,0
+SH173,Zomato,H01,H05,H05,5000,Critical,2026-09-18T20:00,Delivered,Packaging,No,0
+SH174,Swiggy,H04,H03,H11,4000,High,2026-09-20T18:00,Misplaced,Raw_Materials,Yes,57.1
+SH175,Blinkit,H02,H08,H02,3000,Medium,2026-09-19T20:00,In_Transit,Electronics,No,0
+SH176,DMart,H01,H06,H06,4500,High,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH177,Flipkart,H07,H08,H04,6000,Critical,2026-09-19T20:00,Misplaced,MRO,Yes,192.8
+SH178,Amazon,H05,H01,H01,3500,High,2026-09-19T18:00,Delivered,Packaging,No,0
+SH179,Reliance,H01,H04,H04,5000,Medium,2026-09-20T18:00,In_Transit,Electronics,No,0
+SH180,Tata Motors,H06,H02,H07,2500,Critical,2026-09-19T18:00,Misplaced,Raw_Materials,Yes,176.0
+SH181,Zomato,H04,H01,H01,5500,High,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH182,Swiggy,H08,H02,H08,4000,Medium,2026-09-20T15:00,In_Transit,MRO,No,0
+SH183,Blinkit,H02,H05,H05,3000,High,2026-09-19T20:00,Delivered,Packaging,No,0
+SH184,DMart,H01,H02,H02,6500,Medium,2026-09-19T18:00,Delivered,Electronics,No,0
+SH185,Flipkart,H03,H08,H11,3500,High,2026-09-20T15:00,Misplaced,Raw_Materials,Yes,109.0
+SH186,Amazon,H01,H07,H01,4500,Medium,2026-09-19T20:00,In_Transit,Office_Supplies,No,0
+SH187,Reliance,H05,H01,H16,3000,Critical,2026-09-19T20:00,Misplaced,MRO,Yes,171.7
+SH188,Tata Motors,H02,H03,H03,5000,High,2026-09-19T18:00,Delivered,Packaging,No,0
+SH189,Zomato,H07,H05,H05,3500,Medium,2026-09-20T18:00,In_Transit,Electronics,No,0
+SH190,Swiggy,H01,H08,H08,7000,High,2026-09-20T18:00,Delivered,Raw_Materials,No,0
+SH191,Blinkit,H04,H06,H06,4000,Critical,2026-09-18T20:00,Delivered,Office_Supplies,No,0
+SH192,DMart,H02,H01,H01,2500,Medium,2026-09-18T22:00,Delivered,Packaging,No,0
+SH193,Flipkart,H05,H03,H05,5500,High,2026-09-19T20:00,In_Transit,MRO,No,0
+SH194,Amazon,H01,H04,H04,3000,Medium,2026-09-20T15:00,In_Transit,Raw_Materials,No,0
+SH195,Reliance,H08,H07,H07,6000,High,2026-09-19T20:00,Delivered,Electronics,No,0
+SH196,Tata Motors,H01,H02,H07,4500,Critical,2026-09-19T20:00,Misplaced,Packaging,Yes,93.4
+SH197,Zomato,H06,H05,H05,3500,High,2026-09-19T18:00,Delivered,Office_Supplies,No,0
+SH198,Swiggy,H04,H01,H01,4000,Medium,2026-09-19T22:00,In_Transit,MRO,No,0
+SH199,Blinkit,H01,H08,H08,6500,High,2026-09-20T18:00,In_Transit,Raw_Materials,No,0
+SH200,DMart,H03,H05,H05,5000,Critical,2026-09-19T20:00,In_Transit,Electronics,No,0"""
+
+with open(os.path.join(DATA_DIR, "shipments.csv"), "w", encoding="utf-8") as f:
+    f.write(SHIPMENTS_DATA.strip())
+print("Saved sanitized shipments.csv (200 shipments)")

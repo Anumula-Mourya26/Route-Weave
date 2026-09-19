@@ -1,0 +1,21 @@
+Log_ID,Shipment_ID,Input_Expected_Hub,Input_Actual_Hub,Input_Deviation_KM,Threshold_KM,AI_Decision,Confidence,Reason,Matched_Truck,Candidates_Considered,Solver_Time_Ms,Auto_Execute
+LOG001,SH004,H02,H05,203.7,50,ANOMALY_CONFIRMED,0.97,Deviation exceeds threshold by 4x,V001,7,842,Yes
+LOG002,SH009,H01,H03,175.2,50,ANOMALY_CONFIRMED,0.95,Deviation exceeds threshold by 3.5x,V002,6,723,Yes
+LOG003,SH023,H01,H07,89.7,50,ANOMALY_CONFIRMED,0.99,Deviation exceeds threshold,V005,9,512,Yes
+LOG004,SH035,H01,H05,198.6,50,ANOMALY_CONFIRMED,0.96,Deviation exceeds threshold by 4x,V015,8,689,Yes
+LOG005,SH043,H02,H07,93.4,50,ANOMALY_CONFIRMED,0.98,Deviation exceeds threshold,V009,7,534,Yes
+LOG006,SH050,H01,H03,175.2,50,ANOMALY_CONFIRMED,0.95,Deviation exceeds threshold,V011,6,478,Yes
+LOG007,SH065,H04,H07,89.7,50,ANOMALY_CONFIRMED,0.99,Deviation exceeds threshold,V019,9,601,Yes
+LOG008,SH074,H03,H07,178.3,50,ANOMALY_CONFIRMED,0.96,Deviation exceeds threshold,V017,7,556,Yes
+LOG009,SH080,H02,H07,93.4,50,ANOMALY_CONFIRMED,0.98,Deviation exceeds threshold,V009,8,498,Yes
+LOG010,SH085,H08,H07,229.4,50,ANOMALY_CONFIRMED,0.97,Deviation exceeds threshold by 4.6x,V021,6,712,Yes
+LOG011,SH091,H01,H05,198.6,50,ANOMALY_CONFIRMED,0.96,Deviation exceeds threshold by 4x,V015,7,634,Yes
+LOG012,SH098,H05,H07,120.8,50,ANOMALY_CONFIRMED,0.97,Deviation exceeds threshold,V019,8,567,Yes
+LOG013,SH103,H04,H05,105.6,50,ANOMALY_CONFIRMED,0.98,Deviation exceeds threshold,V014,6,489,Yes
+LOG014,SH115,H08,H04,125.7,50,ANOMALY_CONFIRMED,0.97,Deviation exceeds threshold,V013,7,523,Yes
+LOG015,SH123,H08,H07,229.4,50,ANOMALY_CONFIRMED,0.96,Deviation exceeds threshold by 4.6x,V021,7,598,Yes
+LOG016,SH132,H02,H08,155.2,50,ANOMALY_CONFIRMED,0.95,Deviation exceeds threshold by 3x,V041,6,612,Yes
+LOG017,SH136,H02,H07,89.7,50,ANOMALY_CONFIRMED,0.99,Deviation exceeds threshold,V009,8,501,Yes
+LOG018,SH139,H01,H03,175.2,50,ANOMALY_CONFIRMED,0.95,Deviation exceeds threshold,V002,6,467,Yes
+LOG019,SH149,H02,H07,93.4,50,ANOMALY_CONFIRMED,0.98,Deviation exceeds threshold,V009,7,489,Yes
+LOG020,SH155,H04,H07,95.8,50,ANOMALY_CONFIRMED,0.98,Deviation exceeds threshold,V019,8,534,Yes

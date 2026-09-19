@@ -1,0 +1,10 @@
+[
+  { "hub_id": "H1", "name": "Hyderabad", "lat": 17.3850, "lng": 78.4867, "type": "origin" },
+  { "hub_id": "H2", "name": "Warangal", "lat": 17.9689, "lng": 79.5941, "type": "destination" },
+  { "hub_id": "H3", "name": "Nizamabad", "lat": 18.6725, "lng": 78.0941, "type": "transit" },
+  { "hub_id": "H4", "name": "Karimnagar", "lat": 18.4386, "lng": 79.1288, "type": "transit" },
+  { "hub_id": "H5", "name": "Khammam", "lat": 17.2473, "lng": 80.1514, "type": "transit" },
+  { "hub_id": "H6", "name": "Mahbubnagar", "lat": 16.7488, "lng": 77.9850, "type": "origin" },
+  { "hub_id": "H7", "name": "Nalgonda", "lat": 17.0575, "lng": 79.2684, "type": "transfer_hub" },
+  { "hub_id": "H8", "name": "Adilabad", "lat": 19.6640, "lng": 78.5320, "type": "destination" }
+]

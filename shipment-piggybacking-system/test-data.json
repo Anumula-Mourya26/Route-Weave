@@ -1,0 +1,46 @@
+{
+  "misplaced_shipment": {
+    "id": "SHP-9921-RECOVERY",
+    "current_hub": "HUB-MILWAUKEE",
+    "destination": "HUB-CHICAGO",
+    "weight": 175.5,
+    "deadline": 5.0,
+    "priority": "HIGH",
+    "is_misplaced": true
+  },
+  "hubs": [
+    {
+      "id": "HUB-MILWAUKEE",
+      "name": "Midwest North Sorting Hub (Milwaukee, WI)",
+      "location_coordinates": [43.0389, -87.9065]
+    },
+    {
+      "id": "HUB-CHICAGO",
+      "name": "Central Great Lakes Hub (Chicago, IL)",
+      "location_coordinates": [41.8781, -87.6298]
+    },
+    {
+      "id": "HUB-INDIANAPOLIS",
+      "name": "Cross-Dock Gateway (Indianapolis, IN)",
+      "location_coordinates": [39.7684, -86.1581]
+    }
+  ],
+  "active_routes": [
+    {
+      "id": "TRUCK-RUN-101-CAPABLE",
+      "current_location": "HUB-MILWAUKEE",
+      "destination": "HUB-CHICAGO",
+      "available_capacity": 650.0,
+      "cost_per_km": 1.75,
+      "average_speed_kmh": 65.0
+    },
+    {
+      "id": "VAN-RUN-204-OVERLOADED",
+      "current_location": "HUB-MILWAUKEE",
+      "destination": "HUB-CHICAGO",
+      "available_capacity": 85.0,
+      "cost_per_km": 0.95,
+      "average_speed_kmh": 75.0
+    }
+  ]
+}

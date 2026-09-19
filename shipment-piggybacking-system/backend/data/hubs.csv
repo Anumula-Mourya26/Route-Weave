@@ -1,0 +1,33 @@
+Hub_ID,Hub_Name,City,State,Latitude,Longitude,Hub_Type,Storage_Capacity_Tons,Current_Load_Tons,Operating_Hours,Handling_Cost_INR
+H01,Hyderabad Central,Hyderabad,Telangana,17.3850,78.4867,Origin,50000,32000,24x7,500
+H02,Warangal Hub,Warangal,Telangana,17.9689,79.5941,Destination,25000,14000,06:00-22:00,450
+H03,Nizamabad Hub,Nizamabad,Telangana,18.6725,78.0941,Transit,20000,9000,06:00-22:00,400
+H04,Karimnagar Hub,Karimnagar,Telangana,18.4386,79.1288,Transit,22000,11000,06:00-22:00,420
+H05,Khammam Hub,Khammam,Telangana,17.2473,80.1514,Transit,18000,8000,06:00-22:00,400
+H06,Mahbubnagar Hub,Mahbubnagar,Telangana,16.7488,77.9850,Origin,20000,10000,24x7,450
+H07,Nalgonda Transfer,Nalgonda,Telangana,17.0575,79.2684,Transfer_Hub,15000,6000,24x7,380
+H08,Adilabad Hub,Adilabad,Telangana,19.6640,78.5320,Destination,16000,7000,06:00-22:00,420
+H09,Ramagundam Hub,Ramagundam,Telangana,18.7510,79.5130,Transit,14000,6000,06:00-22:00,400
+H10,Siddipet Hub,Siddipet,Telangana,18.1018,78.8520,Transit,12000,5000,06:00-22:00,380
+H11,Jagtial Hub,Jagtial,Telangana,18.7947,78.9120,Transit,10000,4000,06:00-22:00,370
+H12,Mancherial Hub,Mancherial,Telangana,18.8750,79.4440,Transit,11000,4500,06:00-22:00,380
+H13,Kothagudem Hub,Kothagudem,Telangana,17.5500,80.6180,Transit,13000,5500,06:00-22:00,400
+H14,Suryapet Hub,Suryapet,Telangana,17.1400,79.6200,Transit,12000,5000,06:00-22:00,380
+H15,Miryalaguda Hub,Miryalaguda,Telangana,16.8720,79.5650,Transit,10000,4000,06:00-22:00,370
+H16,Bhongir Hub,Bhongir,Telangana,17.5150,78.8880,Transit,9000,3500,06:00-22:00,360
+H17,Medak Hub,Medak,Telangana,18.0460,78.2600,Transit,10000,4000,06:00-22:00,370
+H18,Sangareddy Hub,Sangareddy,Telangana,17.6250,78.0900,Transit,13000,5500,24x7,400
+H19,Zaheerabad Hub,Zaheerabad,Telangana,17.6800,77.6100,Transit,11000,4500,06:00-22:00,380
+H20,Gadwal Hub,Gadwal,Telangana,16.2300,77.8000,Transit,9000,3500,06:00-22:00,360
+H21,Wanaparthy Hub,Wanaparthy,Telangana,16.3620,78.0620,Transit,8000,3000,06:00-22:00,350
+H22,Narayanpet Hub,Narayanpet,Telangana,16.7480,77.4950,Transit,8000,3000,06:00-22:00,350
+H23,Jogulamba Hub,Jogulamba Gadwal,Telangana,16.2300,77.8000,Transit,7000,2500,06:00-22:00,340
+H24,Bhadradri Hub,Bhadradri Kothagudem,Telangana,17.5500,80.6180,Transit,10000,4000,06:00-22:00,370
+H25,Mulugu Hub,Mulugu,Telangana,18.1910,79.9430,Transit,8000,3000,06:00-22:00,350
+H26,Bengaluru Hub,Bengaluru,Karnataka,12.9716,77.5946,Destination,60000,35000,24x7,600
+H27,Chennai Hub,Chennai,Tamil Nadu,13.0827,80.2707,Destination,55000,30000,24x7,580
+H28,Vijayawada Hub,Vijayawada,Andhra Pradesh,16.5062,80.6480,Transit,30000,15000,24x7,500
+H29,Visakhapatnam Hub,Visakhapatnam,Andhra Pradesh,17.6868,83.2185,Destination,35000,18000,24x7,520
+H30,Mumbai Hub,Mumbai,Maharashtra,19.0760,72.8777,Destination,70000,40000,24x7,650
+H31,Pune Hub,Pune,Maharashtra,18.5204,73.8567,Transit,40000,20000,24x7,550
+H32,Nagpur Hub,Nagpur,Maharashtra,21.1458,79.0882,Transit,35000,17000,24x7,530

@@ -1,0 +1,18 @@
+{
+  "name": "shipment-piggybacking-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simulate-anomaly.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:demo": "node demo-runner.js",
+    "demo:advanced": "npm --prefix backend run demo:advanced"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "socket.io-client": "^4.8.3"
+  }
+}

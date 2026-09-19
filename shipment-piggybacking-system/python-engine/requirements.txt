@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+networkx
+scipy
+osmnx
+ortools
+pytest
