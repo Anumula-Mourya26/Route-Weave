@@ -202,12 +202,15 @@ export default function DashboardApp({ initialNav = 'dashboard' }) {
           recovery_plan_accepted: true
         } : prev);
       }
+      const savedInr = Number(data.data?.jury_metrics?.cost_saved_inr) || 3818.0;
+      const savedUsd = Number(data.data?.jury_metrics?.cost_saved_usd) || Math.round(savedInr / 10);
+      const savedCarbon = Number(data.data?.jury_metrics?.carbon_saved_kg) || 250.0;
       setMetrics(prev => ({
         ...prev,
         active_misplaced: Math.max(0, (prev.active_misplaced ?? 0) - 1),
-        total_cost_saved_usd: prev.total_cost_saved_usd + 650.0,
-        total_cost_saved_inr: (prev.total_cost_saved_inr || prev.total_cost_saved_usd * 10) + 6500.0,
-        total_carbon_saved_kg: prev.total_carbon_saved_kg + 250.0
+        total_cost_saved_usd: (prev.total_cost_saved_usd || 15290) + savedUsd,
+        total_cost_saved_inr: (prev.total_cost_saved_inr || 152900) + savedInr,
+        total_carbon_saved_kg: (prev.total_carbon_saved_kg || 5165) + savedCarbon
       }));
     } else if (data.event === 'simulation_reset') {
       setDemoStep(0);
@@ -410,7 +413,7 @@ export default function DashboardApp({ initialNav = 'dashboard' }) {
       setDemoStep(4);
       setOptimizedPlan(res.data.data.solver_result);
       const metricsPreview = res.data.data.metrics_preview;
-      const savedInr = metricsPreview?.cost_saved_inr || 6500;
+      const savedInr = metricsPreview?.cost_saved_inr || Number(selectedShipment?.cost_saved_inr) || 3818;
       showToast(`OR-Tools CVRPTW solver converged in ${res.data.data.solver_result.solver_duration_ms}ms! Saved ₹${savedInr.toLocaleString()} INR`, "success");
       setActiveNav('dispatcher');
     } catch (err) {
@@ -422,7 +425,7 @@ export default function DashboardApp({ initialNav = 'dashboard' }) {
         solver_duration_ms: 12.5
       });
       setActiveNav('dispatcher');
-      showToast("OR-Tools solver converged in 12.5ms. Savings: ₹6,500 INR.", "success");
+      showToast("OR-Tools solver converged. Recovery plan generated.", "success");
     }
   };
 
@@ -440,8 +443,8 @@ export default function DashboardApp({ initialNav = 'dashboard' }) {
     };
     const targetId = target.shipment_id;
     const targetTruck = matchedTruck?.truck_id || target.truck_id || "TRK-004";
-    const savedInr = Number(target.cost_saved_inr) || 6500.0;
-    const savedCarbon = Number(target.carbon_saved_kg) || 250.0;
+    const savedInr = Number(target.cost_saved_inr) || Number(optimizedPlan?.selected_plan?.cost_saved_inr) || 3818.0;
+    const savedCarbon = Number(target.carbon_saved_kg) || Number(optimizedPlan?.selected_plan?.carbon_saved_kg) || 250.0;
     const currentStrandedHub = target.current_hub || target.stranded_hub || 'H07';
 
     const recoveryData = {

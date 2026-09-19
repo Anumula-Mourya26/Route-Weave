@@ -97,7 +97,7 @@ def get_shipment(shipment_id: str):
         raise HTTPException(status_code=404, detail="Shipment not found")
     return {"success": True, "data": shp}
 
-from routing_engine import get_distance, get_valid_intermediate_hub
+from routing_engine import get_distance, get_valid_intermediate_hub, compute_recovery_economics
 
 # Authentic Incidents Map from incidents.csv (Master Dataset)
 def get_fresh_incidents_map():
@@ -358,10 +358,31 @@ async def optimize_recovery_plan(payload: OptimizeRequest):
             timeout_sec=payload.timeout_seconds
         )
 
-    # Dynamic metrics specific to shipment
-    cost_inr = float(shp.get("cost_saved_inr", 6500.0) or 6500.0)
-    carbon_kg = float(shp.get("carbon_saved_kg", 250.0) or 250.0)
-    detour_km = float(shp.get("detour_km", 0.0) or 0.0)
+    # Dynamic metrics specific to shipment from optimized candidate plan
+    selected_plan = result.get("selected_plan") or (candidates[0] if candidates else {})
+    detour_km = float(selected_plan.get("detour_km", 0.0))
+    cost_inr = float(selected_plan.get("cost_saved_inr", 0.0))
+    
+    # If not present on selected plan, calculate dynamically via Haversine
+    if cost_inr <= 0.0:
+        cur_hub = shp.get("current_hub") or shp.get("origin_hub") or "H07"
+        dest_hub = shp.get("destination_hub") or "H02"
+        econ = compute_recovery_economics(cur_hub, dest_hub, detour_km)
+        cost_inr = econ["cost_saved_inr"]
+
+    carbon_kg = float(selected_plan.get("carbon_saved_kg", 0.0))
+    if carbon_kg <= 0.0:
+        carbon_kg = round(float(shp.get("weight_tons", 4.5)) * 55.0, 1)
+
+    cost_usd = round(cost_inr / 10.0, 2)
+
+    # Persist updated recovery metrics on shipment record in DB cache
+    update_shipment(payload.shipment_id, {
+        "cost_saved_inr": cost_inr,
+        "cost_saved_usd": cost_usd,
+        "carbon_saved_kg": carbon_kg,
+        "detour_km": detour_km
+    })
 
     event_payload = {
         "event": "plan_optimized",
@@ -369,7 +390,7 @@ async def optimize_recovery_plan(payload: OptimizeRequest):
         "shipment_id": payload.shipment_id,
         "solver_result": result,
         "metrics_preview": {
-            "cost_saved_usd": round(cost_inr / 10.0, 2),
+            "cost_saved_usd": cost_usd,
             "cost_saved_inr": cost_inr,
             "carbon_saved_kg": carbon_kg,
             "detour_km": detour_km,
@@ -393,7 +414,26 @@ async def execute_recovery(payload: ExecuteRecoveryRequest):
     """
     shipment_id = payload.shipment_id or "SH004"
     truck_id = payload.truck_id or "TRK-004"
-    cost_inr = payload.cost_saved_inr or (payload.cost_saved_usd * 10.0)
+    shp = get_shipment_by_id(shipment_id) or {}
+    
+    # Determine cost_saved_inr dynamically
+    cost_inr = payload.cost_saved_inr if payload.cost_saved_inr is not None and payload.cost_saved_inr > 0 else (
+        (payload.cost_saved_usd * 10.0) if payload.cost_saved_usd else 0.0
+    )
+    if not cost_inr:
+        cur_cost = float(shp.get("cost_saved_inr", 0.0) or 0.0)
+        if cur_cost > 0:
+            cost_inr = cur_cost
+        else:
+            cur_hub = shp.get("current_hub") or shp.get("origin_hub") or "H07"
+            dest_hub = shp.get("destination_hub") or "H02"
+            econ = compute_recovery_economics(cur_hub, dest_hub, payload.detour_km)
+            cost_inr = econ["cost_saved_inr"]
+
+    cost_usd = round(cost_inr / 10.0, 2)
+    carbon_kg = payload.carbon_saved_kg if payload.carbon_saved_kg is not None and payload.carbon_saved_kg > 0 else (
+        float(shp.get("carbon_saved_kg", 250.0) or 250.0)
+    )
 
     # 1. Update Shipment record
     updated_shp = update_shipment(shipment_id, {
@@ -401,9 +441,9 @@ async def execute_recovery(payload: ExecuteRecoveryRequest):
         "truck_id": truck_id,
         "recovery_mode": payload.recovery_mode,
         "detour_km": payload.detour_km,
-        "cost_saved_usd": payload.cost_saved_usd,
+        "cost_saved_usd": cost_usd,
         "cost_saved_inr": cost_inr,
-        "carbon_saved_kg": payload.carbon_saved_kg,
+        "carbon_saved_kg": carbon_kg,
         "is_misplaced": False,
         "is_recovery_accepted": True,
         "recovery_plan_accepted": True,
@@ -413,11 +453,11 @@ async def execute_recovery(payload: ExecuteRecoveryRequest):
     # 2. Update Truck record
     truck = next((t for t in get_all_trucks() if t["truck_id"] == truck_id), None)
     if truck:
-        new_load = float(truck.get("current_load_tons", 6.0)) + 4.5
+        new_load = float(truck.get("current_load_tons", 6.0)) + float(shp.get("weight_tons", 4.5))
         new_spare = max(0.0, float(truck.get("capacity_tons", 14.0)) - new_load)
         update_truck(truck_id, {
-            "current_load_tons": new_load,
-            "spare_capacity_tons": new_spare,
+            "current_load_tons": round(new_load, 1),
+            "spare_capacity_tons": round(new_spare, 1),
             "status": "recovering"
         })
 
@@ -427,9 +467,9 @@ async def execute_recovery(payload: ExecuteRecoveryRequest):
         "primary_truck_id": truck_id,
         "recovery_mode": payload.recovery_mode.upper().replace(" ", "_"),
         "detour_km": payload.detour_km,
-        "cost_saved_usd": payload.cost_saved_usd,
+        "cost_saved_usd": cost_usd,
         "cost_saved_inr": cost_inr,
-        "carbon_saved_kg": payload.carbon_saved_kg,
+        "carbon_saved_kg": carbon_kg,
         "hours_saved": payload.hours_saved,
         "status": "EXECUTED",
         "solver_type": "OR_TOOLS",
@@ -446,16 +486,16 @@ async def execute_recovery(payload: ExecuteRecoveryRequest):
         "truck_id": truck_id,
         "recovery_mode": payload.recovery_mode,
         "jury_metrics": {
-            "cost_saved_usd": 650.0,
-            "cost_saved_inr": 6500.0,
-            "carbon_saved_kg": 250.0,
-            "hours_saved": 2.0,
+            "cost_saved_usd": cost_usd,
+            "cost_saved_inr": cost_inr,
+            "carbon_saved_kg": carbon_kg,
+            "hours_saved": payload.hours_saved,
             "sla_compliance": "100%",
             "delivery_status": "2 Hours Ahead of Schedule"
         },
         "morphed_route": ["H1", "H7", "H2"],
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "message": f"RECOVERY EXECUTED: TRK-004 secured SHP-1004. Saved ₹6,500 & 250kg CO2!"
+        "message": f"RECOVERY EXECUTED: {truck_id} secured {shipment_id}. Saved ₹{cost_inr:,.0f} & {carbon_kg:,.0f}kg CO2!"
     }
 
     await manager.broadcast(event_payload)
@@ -510,9 +550,12 @@ def list_incidents_history(limit: int = 50, page: int = 1):
         except (ValueError, TypeError):
             dev = 50.0
         
-        dedicated_inr = round(dev * 35.0 * 1.5 + 500.0, 2)
-        piggyback_inr = 2000.0
-        saved_inr = max(500.0, dedicated_inr - piggyback_inr)
+        act_hub = inc.get("Actual_Hub", "H07")
+        exp_hub = inc.get("Expected_Hub", "H02")
+        econ = compute_recovery_economics(act_hub, exp_hub, detour_km=0.0)
+        dedicated_inr = econ["dedicated_cost_inr"]
+        piggyback_inr = econ["piggyback_cost_inr"]
+        saved_inr = econ["cost_saved_inr"]
 
         enriched.append({
             "id": inc.get("Incident_ID"),
@@ -552,15 +595,20 @@ def export_incident(incident_id: str, format: str = Query("csv")):
     if not inc:
         inc = {"Incident_ID": incident_id, "Shipment_ID": "SH004", "Actual_Hub": "H07", "Status": "Resolved"}
 
+    act_hub = inc.get("Actual_Hub", "H07")
+    exp_hub = inc.get("Expected_Hub", "H02")
+    econ = compute_recovery_economics(act_hub, exp_hub, detour_km=0.0)
+    saved_inr = econ["cost_saved_inr"]
+
     if format.lower() == "pdf":
         report = (
             f"%PDF-1.4\n"
             f"1 0 obj << /Title (Incident Post-Mortem {incident_id}) /Author (SH-205 Autonomous Engine) >> endobj\n"
             f"Incident: {incident_id}\n"
             f"Shipment ID: {inc.get('Shipment_ID')}\n"
-            f"Actual Location Hub: {inc.get('Actual_Hub')}\n"
+            f"Actual Location Hub: {act_hub}\n"
             f"Recovery Mode: Autonomous Piggybacking (TRK-004)\n"
-            f"Cost Saved: ₹6,500 INR\n"
+            f"Cost Saved: ₹{saved_inr:,.0f} INR\n"
             f"Carbon Avoided: 250 kg CO2\n"
             f"SLA Compliance: 100%\n"
             f"%%EOF\n"
@@ -571,8 +619,8 @@ def export_incident(incident_id: str, format: str = Query("csv")):
     else:
         csv_data = (
             f"Incident_ID,Shipment_ID,Expected_Hub,Actual_Hub,Deviation_KM,Status,Cost_Saved_INR,Carbon_Saved_kg\n"
-            f"{incident_id},{inc.get('Shipment_ID')},{inc.get('Expected_Hub','H02')},{inc.get('Actual_Hub','H07')},"
-            f"{inc.get('Deviation_KM','93.4')},{inc.get('Status','Resolved')},6500.00,250.0\n"
+            f"{incident_id},{inc.get('Shipment_ID')},{exp_hub},{act_hub},"
+            f"{inc.get('Deviation_KM','93.4')},{inc.get('Status','Resolved')},{saved_inr:.2f},250.0\n"
         )
         return Response(content=csv_data, media_type="text/csv", headers={
             "Content-Disposition": f"attachment; filename=incident-{incident_id}.csv"

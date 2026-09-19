@@ -3,7 +3,7 @@ from typing import List, Dict, Any, Optional
 from ortools.constraint_solver import pywrapcp, routing_enums_pb2
 
 from config import HUB_MAP, HUB_BY_NAME, DEDICATED_VEHICLE_BASE_COST, DEDICATED_VEHICLE_SPEED_KMH
-from routing_engine import get_distance, get_route_waypoints
+from routing_engine import get_distance, get_route_waypoints, compute_recovery_economics
 
 def resolve_hub_id(name_or_id: str) -> str:
     if not name_or_id:
@@ -98,35 +98,22 @@ def find_piggyback_candidates(shipment: Dict[str, Any], trucks: List[Dict[str, A
                 alignment_score = 45.0
 
         if can_direct:
-            # Baseline Dedicated Vehicle vs Piggyback Cost/Carbon
-            direct_dist = get_distance(misplaced_hub_id, dest_hub_id)
-            if direct_dist <= 0:
-                direct_dist = 50.0
-            
-            dedicated_cost = round(DEDICATED_VEHICLE_BASE_COST + (direct_dist * 2.5), 2)
-            dedicated_cost_inr = round(dedicated_cost * 10.0, 2)
-            dedicated_carbon = round(direct_dist * weight_tons * 0.45, 1)
+            # Dynamic Geospatial Haversine Economics:
+            # Dedicated Truck Cost = Distance_to_Destination_km * 45 INR/km
+            # Piggyback Cost = Detour_Distance_km * 15 INR/km + 1000 INR
+            # Total Cost Saved = Dedicated_Truck_Cost - Piggyback_Cost
+            econ = compute_recovery_economics(misplaced_hub_id, dest_hub_id, detour_km)
+            distance_to_dest = econ["distance_to_destination_km"]
+            dedicated_cost_inr = econ["dedicated_cost_inr"]
+            piggyback_cost_inr = econ["piggyback_cost_inr"]
+            cost_saved_inr = econ["cost_saved_inr"]
+            dedicated_cost = econ["dedicated_cost_usd"]
+            piggyback_cost_usd = econ["piggyback_cost_usd"]
+            cost_saved_usd = econ["cost_saved_usd"]
 
-            cost_per_km = float(t.get("cost_per_km_inr") or t.get("cost_per_km") or 45.0)
-            piggyback_cost_inr = round(2000.0 + (detour_km * cost_per_km), 2)
-            piggyback_cost_usd = round(piggyback_cost_inr / 10.0, 2)
-
-            cost_saved_inr = round(max(1500.0, dedicated_cost_inr - piggyback_cost_inr), 2)
-            cost_saved_usd = round(cost_saved_inr / 10.0, 2)
+            dedicated_carbon = round(distance_to_dest * weight_tons * 0.45, 1)
             carbon_saved_kg = round(max(20.0, dedicated_carbon - (detour_km * weight_tons * 0.1 + 15.0)), 1)
             hours_saved = 2.0
-
-            # Benchmark calibration for SHP-1004 / SH004 on TRK-004 / V004 / V001
-            if (t.get("truck_id") in ("TRK-004", "V004") or t.get("vehicle_id") in ("V004", "V001")) and shipment.get("shipment_id") in ("SHP-1004", "SH004"):
-                cost_saved_usd = 650.0
-                cost_saved_inr = 6500.0
-                dedicated_cost_inr = 8500.0
-                piggyback_cost_inr = 2000.0
-                carbon_saved_kg = 250.0
-                hours_saved = 2.0
-                detour_km = 0.0
-                mode = "Direct Piggyback"
-                alignment_score = 100.0
 
             # Generate 3 distinct paths for progressive map visualization:
             # 1. Blue path: Assigned truck's original route
@@ -148,6 +135,7 @@ def find_piggyback_candidates(shipment: Dict[str, Any], trucks: List[Dict[str, A
                 "route": route_ids,
                 "recovery_mode": mode,
                 "detour_km": detour_km,
+                "distance_to_destination_km": distance_to_dest,
                 "geographic_alignment_score": alignment_score,
                 "dedicated_cost_usd": dedicated_cost,
                 "piggyback_cost_usd": piggyback_cost_usd,

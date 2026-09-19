@@ -296,7 +296,7 @@ export default function IncidentHistory() {
                     <div className="bg-emerald-500/10 border border-emerald-500/30 p-2 rounded-lg">
                       <span className="text-[10px] text-emerald-400 block">Net Saved</span>
                       <span className="text-xs font-bold text-emerald-400">
-                        +₹{(selectedIncident.financial_impact.cost_saved_inr || (selectedIncident.financial_impact.cost_saved * 10) || 6500).toFixed(0)}
+                        +₹{(Number(selectedIncident.financial_impact.cost_saved_inr) || (Number(selectedIncident.financial_impact.cost_saved) * 10) || 0).toFixed(0)}
                       </span>
                     </div>
                   </div>

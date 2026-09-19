@@ -132,6 +132,8 @@ def _load_local_data():
 
                     weight_kg = float(r["Weight_kg"]) if r.get("Weight_kg") else 1000.0
                     weight_tons = round(weight_kg / 1000.0, 2)
+                    cost_inr = float(r.get("Cost_Saved_INR", 0.0) or 0.0)
+                    cost_usd = round(cost_inr / 10.0, 2)
                     
                     _local_shipments.append({
                         "shipment_id": s_id,
@@ -149,8 +151,8 @@ def _load_local_data():
                         "priority": r["Priority"].strip(),
                         "recovery_mode": "N/A",
                         "detour_km": 0.0,
-                        "cost_saved_inr": 0.0,
-                        "cost_saved_usd": 0.0,
+                        "cost_saved_inr": cost_inr,
+                        "cost_saved_usd": cost_usd,
                         "carbon_saved_kg": 0.0,
                         "compliance": "Yes",
                         "is_misplaced": False,
@@ -192,8 +194,8 @@ def _load_local_data():
                             "priority": r["Priority"].strip(),
                             "recovery_mode": "N/A",
                             "detour_km": 0.0,
-                            "cost_saved_usd": 0.0,
-                            "cost_saved_inr": 0.0,
+                            "cost_saved_usd": float(r.get("Cost_Saved_USD", 0.0) or 0.0),
+                            "cost_saved_inr": round(float(r.get("Cost_Saved_USD", 0.0) or 0.0) * 10.0, 2),
                             "carbon_saved_kg": 0.0,
                             "compliance": r.get("Compliance", "Yes").strip(),
                             "is_misplaced": False,

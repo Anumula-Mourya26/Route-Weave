@@ -45,6 +45,9 @@ class ShipmentModel(BaseModel):
     cost_saved_usd: float = 0.0
     cost_saved_inr: float = 0.0
     carbon_saved_kg: float = 0.0
+    distance_to_destination_km: Optional[float] = None
+    dedicated_cost_inr: Optional[float] = None
+    piggyback_cost_inr: Optional[float] = None
     compliance: str = "Yes"
     is_misplaced: Optional[bool] = False
 
@@ -72,9 +75,9 @@ class ExecuteRecoveryRequest(BaseModel):
     truck_id: str = "TRK-004"
     recovery_mode: str = "Direct Piggyback"
     detour_km: float = 0.0
-    cost_saved_usd: float = 650.0
-    cost_saved_inr: float = 6500.0
-    carbon_saved_kg: float = 250.0
+    cost_saved_usd: Optional[float] = None
+    cost_saved_inr: Optional[float] = None
+    carbon_saved_kg: Optional[float] = 250.0
     hours_saved: float = 2.0
     new_route: Optional[List[str]] = None
 

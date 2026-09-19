@@ -1,5 +1,5 @@
 import math
-from typing import Dict, List, Tuple, Any
+from typing import Dict, List, Tuple, Any, Optional
 from config import TELANGANA_HUBS, HUB_MAP, HUB_BY_NAME
 
 def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -60,6 +60,54 @@ def get_distance(h1: str, h2: str) -> float:
     if node1 and node2:
         return round(haversine_distance(node1["lat"], node1["lng"], node2["lat"], node2["lng"]) * 1.25, 2)
     return 100.0
+
+def get_hub_coords(h: str) -> Optional[Tuple[float, float]]:
+    """Returns (lat, lng) for a hub ID or name."""
+    if not h:
+        return None
+    c = _canonical_hub_id(h)
+    s = "H" + c[2:] if c.startswith("H0") else c
+    node = HUB_MAP.get(c) or HUB_MAP.get(s) or HUB_BY_NAME.get(str(h).strip().lower())
+    if node and "lat" in node and "lng" in node:
+        return float(node["lat"]), float(node["lng"])
+    return None
+
+def compute_recovery_economics(stranded_hub_id: str, destination_hub_id: str, detour_km: float = 0.0) -> Dict[str, float]:
+    """
+    Dynamic Recovery Economics calculation based on actual geospatial distance:
+    1. Distance_to_Destination_km = Haversine(Current_Hub, Original_Destination_Hub)
+    2. Dedicated_Truck_Cost = Distance_to_Destination_km * 45.0 (INR 45/km standard spot freight rate)
+    3. Piggyback_Cost = Detour_Distance_km * 15.0 + 1000.0 (INR 15/km detour rate + INR 1000 flat handling fee)
+    4. Total_Cost_Saved = Dedicated_Truck_Cost - Piggyback_Cost
+    """
+    coords1 = get_hub_coords(stranded_hub_id)
+    coords2 = get_hub_coords(destination_hub_id)
+
+    if coords1 and coords2:
+        dist_km = haversine_distance(coords1[0], coords1[1], coords2[0], coords2[1])
+    else:
+        dist_km = get_distance(stranded_hub_id, destination_hub_id)
+
+    if dist_km <= 0.0:
+        dist_km = 50.0
+
+    dedicated_cost_inr = round(dist_km * 45.0, 2)
+    piggyback_cost_inr = round((max(0.0, float(detour_km)) * 15.0) + 1000.0, 2)
+    cost_saved_inr = round(max(500.0, dedicated_cost_inr - piggyback_cost_inr), 2)
+
+    cost_saved_usd = round(cost_saved_inr / 10.0, 2)
+    dedicated_cost_usd = round(dedicated_cost_inr / 10.0, 2)
+    piggyback_cost_usd = round(piggyback_cost_inr / 10.0, 2)
+
+    return {
+        "distance_to_destination_km": round(dist_km, 2),
+        "dedicated_cost_inr": dedicated_cost_inr,
+        "piggyback_cost_inr": piggyback_cost_inr,
+        "cost_saved_inr": cost_saved_inr,
+        "dedicated_cost_usd": dedicated_cost_usd,
+        "piggyback_cost_usd": piggyback_cost_usd,
+        "cost_saved_usd": cost_saved_usd,
+    }
 
 # Curated Intermediate Transfer/Transit Hubs along Major Corridors (~50km to destination or along trajectory)
 CANONICAL_INTERMEDIATE_HUBS = {

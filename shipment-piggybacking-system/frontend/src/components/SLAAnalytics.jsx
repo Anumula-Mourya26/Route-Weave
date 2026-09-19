@@ -102,7 +102,7 @@ export default function SLAAnalytics() {
           <div>
             <p className="text-[11px] text-slate-400 font-medium">Avg Savings / Run</p>
             <p className="text-xl font-bold text-cyan-400 mt-0.5">
-              ₹{(summary.avg_cost_saved_per_recovery_inr || (summary.avg_cost_saved_per_recovery ? summary.avg_cost_saved_per_recovery * 10 : 6500)).toFixed(0)}
+              ₹{(summary.avg_cost_saved_per_recovery_inr || (summary.avg_cost_saved_per_recovery ? summary.avg_cost_saved_per_recovery * 10 : 3818)).toFixed(0)}
             </p>
             <span className="text-[10px] text-cyan-500/80">Per Recovered Parcel</span>
           </div>

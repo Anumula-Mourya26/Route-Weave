@@ -218,17 +218,37 @@ export default function DispatcherRecoveryView({
   const cargoLoadPct = Math.min(100 - baseLoadPct, Math.round((weightTons / truckCapacityTons) * 100));
   const remainingSparePct = Math.max(0, 100 - baseLoadPct - cargoLoadPct);
 
-  // 3. Recovery Economics Breakdown
-  const detourKm = Number(shp.detour_km) || (shp.deviation_km ? Math.round(shp.deviation_km * 0.18 * 10) / 10 : 16.8);
+  // 3. Recovery Economics Breakdown (Dynamic Geospatial Haversine)
+  const detourKm = Number(shp.detour_km ?? (shp.deviation_km ? Math.round(shp.deviation_km * 0.18 * 10) / 10 : 0.0));
   
+  const distanceToDestKm = useMemo(() => {
+    if (shp.distance_to_destination_km && Number(shp.distance_to_destination_km) > 0) {
+      return Number(shp.distance_to_destination_km);
+    }
+    if (strandedHub?.lat && destHub?.lat) {
+      const R = 6371;
+      const dLat = (destHub.lat - strandedHub.lat) * Math.PI / 180;
+      const dLon = (destHub.lng - strandedHub.lng) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(strandedHub.lat * Math.PI / 180) * Math.cos(destHub.lat * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+      return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) * 10) / 10;
+    }
+    return 107.1;
+  }, [strandedHub, destHub, shp]);
+
+  const dedicatedCostInr = useMemo(() => {
+    if (shp.dedicated_cost_inr && Number(shp.dedicated_cost_inr) > 0) return Math.round(Number(shp.dedicated_cost_inr));
+    return Math.round(distanceToDestKm * 45.0);
+  }, [shp, distanceToDestKm]);
+
+  const piggybackCostInr = useMemo(() => {
+    if (shp.piggyback_cost_inr && Number(shp.piggyback_cost_inr) > 0) return Math.round(Number(shp.piggyback_cost_inr));
+    return Math.round((detourKm * 15.0) + 1000.0);
+  }, [shp, detourKm]);
+
   const costSavedInr = useMemo(() => {
     if (shp.cost_saved_inr && Number(shp.cost_saved_inr) > 0) return Math.round(Number(shp.cost_saved_inr));
-    const dev = Number(shp.deviation_km) || 93.4;
-    return Math.round(Math.max(4500, dev * 35.0 * 1.5));
-  }, [shp]);
-
-  const dedicatedCostInr = costSavedInr + 2000;
-  const piggybackCostInr = 2000;
+    return Math.max(500, dedicatedCostInr - piggybackCostInr);
+  }, [shp, dedicatedCostInr, piggybackCostInr]);
 
   const carbonSavedKg = useMemo(() => {
     if (shp.carbon_saved_kg && Number(shp.carbon_saved_kg) > 0) return Math.round(Number(shp.carbon_saved_kg));

@@ -1,13 +1,13 @@
 Shipment_ID,Shipper,Origin_Hub,Destination_Hub,Dispatch_Date,Expected_Delivery,Actual_Delivery,Cargo_Category,Shipment_Status,Weight_Tons,Truck_ID,Truck_Capacity_Tons,Spare_Capacity_Tons,Current_Hub,Priority,Recovery_Mode,Detour_KM,Cost_Saved_USD,Carbon_Saved_kg,Compliance
 SHP-1001,Flipkart,Hyderabad,Warangal,2026-09-17,2026-09-19,2026-09-19,Electronics,Delivered,3.5,TRK-003,20,0,Warangal,High,N/A,0,0,0,Yes
 SHP-1002,Amazon,Mahbubnagar,Adilabad,2026-09-16,2026-09-20,,Raw Materials,In Transit,5.0,TRK-002,16,6,Karimnagar,Medium,N/A,0,0,0,Yes
-SHP-1003,Reliance,Hyderabad,Warangal,2026-09-17,2026-09-19,2026-09-19,Office Supplies,Misplaced,2.0,,0,0,Nalgonda,High,Relay,8,540,180,Yes
-SHP-1004,Tata Motors,Hyderabad,Warangal,2026-09-17,2026-09-19,2026-09-19,Electronics,Misplaced,4.5,TRK-004,14,8,Nalgonda,Critical,Direct Piggyback,0,650,250,Yes
+SHP-1003,Reliance,Hyderabad,Warangal,2026-09-17,2026-09-19,2026-09-19,Office Supplies,Misplaced,2.0,,0,0,Nalgonda,High,Relay,8,369.8,180,Yes
+SHP-1004,Tata Motors,Hyderabad,Warangal,2026-09-17,2026-09-19,2026-09-19,Electronics,Misplaced,4.5,TRK-004,14,8,Nalgonda,Critical,Direct Piggyback,0,381.8,250,Yes
 SHP-1005,Zomato,Mahbubnagar,Karimnagar,2026-09-18,2026-09-20,,Packaging,In Transit,3.0,TRK-004,14,8,Khammam,Medium,N/A,0,0,0,Yes
 SHP-1006,Swiggy,Hyderabad,Nizamabad,2026-09-17,2026-09-20,2026-09-20,MRO,Delivered,4.0,TRK-006,18,4,Nizamabad,High,N/A,0,0,0,Yes
 SHP-1007,Blinkit,Warangal,Hyderabad,2026-09-16,2026-09-18,2026-09-18,Electronics,Delivered,2.5,TRK-008,12,2,Hyderabad,Critical,N/A,0,0,0,Yes
 SHP-1008,DMart,Karimnagar,Adilabad,2026-09-15,2026-09-19,2026-09-19,Raw Materials,Delivered,6.0,TRK-009,20,8,Adilabad,High,N/A,0,0,0,Yes
-SHP-1009,Flipkart,Nizamabad,Hyderabad,2026-09-17,2026-09-19,,Office Supplies,Misplaced,3.0,,0,0,Nizamabad,Critical,Direct Piggyback,12,480,160,Yes
+SHP-1009,Flipkart,Nizamabad,Hyderabad,2026-09-17,2026-09-19,,Office Supplies,Misplaced,3.0,,0,0,Nizamabad,Critical,Direct Piggyback,12,552.8,160,Yes
 SHP-1010,Amazon,Hyderabad,Khammam,2026-09-16,2026-09-18,2026-09-18,Packaging,Delivered,1.5,TRK-011,12,4,Khammam,Low,N/A,0,0,0,Yes
 SHP-1011,Reliance,Khammam,Warangal,2026-09-17,2026-09-19,,Raw Materials,In Transit,5.5,TRK-012,16,5,Khammam,Medium,N/A,0,0,0,Yes
 SHP-1012,Tata Motors,Mahbubnagar,Hyderabad,2026-09-15,2026-09-17,2026-09-17,Electronics,Delivered,4.0,TRK-013,18,6,Hyderabad,Critical,N/A,0,0,0,Yes
@@ -15,13 +15,13 @@ SHP-1013,Zomato,Nalgonda,Warangal,2026-09-16,2026-09-18,2026-09-18,MRO,Delivered
 SHP-1014,Swiggy,Hyderabad,Adilabad,2026-09-14,2026-09-18,2026-09-18,Raw Materials,Delivered,7.0,TRK-015,20,10,Adilabad,High,N/A,0,0,0,Yes
 SHP-1015,Blinkit,Karimnagar,Nizamabad,2026-09-16,2026-09-19,,Office Supplies,In Transit,3.5,TRK-016,14,6,Nizamabad,Medium,N/A,0,0,0,Yes
 SHP-1016,DMart,Hyderabad,Warangal,2026-09-15,2026-09-17,2026-09-17,Packaging,Delivered,2.5,TRK-017,12,4,Warangal,Low,N/A,0,0,0,Yes
-SHP-1017,Flipkart,Nizamabad,Karimnagar,2026-09-17,2026-09-19,,Electronics,Misplaced,4.0,,0,0,Nizamabad,High,Direct Piggyback,15,720,240,Yes
+SHP-1017,Flipkart,Nizamabad,Karimnagar,2026-09-17,2026-09-19,,Electronics,Misplaced,4.0,,0,0,Nizamabad,High,Direct Piggyback,15,382.1,240,Yes
 SHP-1018,Amazon,Warangal,Khammam,2026-09-16,2026-09-18,2026-09-18,Raw Materials,Delivered,5.0,TRK-019,18,6,Khammam,Medium,N/A,0,0,0,Yes
 SHP-1019,Reliance,Hyderabad,Mahbubnagar,2026-09-15,2026-09-17,2026-09-17,Office Supplies,Delivered,3.0,TRK-020,14,4,Mahbubnagar,Critical,N/A,0,0,0,Yes
 SHP-1020,Tata Motors,Adilabad,Hyderabad,2026-09-14,2026-09-18,2026-09-18,Electronics,Delivered,6.5,TRK-021,20,8,Hyderabad,High,N/A,0,0,0,Yes
 SHP-1021,Zomato,Khammam,Nalgonda,2026-09-17,2026-09-19,,Packaging,In Transit,2.0,TRK-022,12,3,Nalgonda,Low,N/A,0,0,0,Yes
 SHP-1022,Swiggy,Hyderabad,Warangal,2026-09-16,2026-09-18,2026-09-18,MRO,Delivered,4.5,TRK-023,16,5,Warangal,Medium,N/A,0,0,0,Yes
-SHP-1023,Blinkit,Nalgonda,Hyderabad,2026-09-17,2026-09-19,,Raw Materials,Misplaced,3.5,,0,0,Nalgonda,Critical,Relay,10,600,200,Yes
+SHP-1023,Blinkit,Nalgonda,Hyderabad,2026-09-17,2026-09-19,,Raw Materials,Misplaced,3.5,,0,0,Nalgonda,Critical,Relay,10,293.0,200,Yes
 SHP-1024,DMart,Karimnagar,Adilabad,2026-09-15,2026-09-19,2026-09-19,Electronics,Delivered,5.5,TRK-025,20,7,Adilabad,High,N/A,0,0,0,Yes
 SHP-1025,Flipkart,Hyderabad,Nizamabad,2026-09-16,2026-09-19,2026-09-19,Office Supplies,Delivered,3.0,TRK-026,14,4,Nizamabad,Medium,N/A,0,0,0,Yes
 SHP-1026,Amazon,Warangal,Hyderabad,2026-09-15,2026-09-17,2026-09-17,Packaging,Delivered,2.5,TRK-027,12,2,Hyderabad,Low,N/A,0,0,0,Yes
@@ -33,28 +33,28 @@ SHP-1031,Blinkit,Hyderabad,Nalgonda,2026-09-17,2026-09-18,2026-09-18,Packaging,D
 SHP-1032,DMart,Karimnagar,Hyderabad,2026-09-16,2026-09-18,2026-09-18,Raw Materials,Delivered,5.0,TRK-033,18,5,Hyderabad,Medium,N/A,0,0,0,Yes
 SHP-1033,Flipkart,Nizamabad,Adilabad,2026-09-14,2026-09-18,2026-09-18,Electronics,Delivered,7.0,TRK-034,20,9,Adilabad,High,N/A,0,0,0,Yes
 SHP-1034,Amazon,Hyderabad,Warangal,2026-09-16,2026-09-18,2026-09-18,MRO,Delivered,3.0,TRK-035,14,4,Warangal,Medium,N/A,0,0,0,Yes
-SHP-1035,Reliance,Khammam,Hyderabad,2026-09-17,2026-09-19,,Office Supplies,Misplaced,2.5,,0,0,Khammam,High,Direct Piggyback,8,520,170,Yes
+SHP-1035,Reliance,Khammam,Hyderabad,2026-09-17,2026-09-19,,Office Supplies,Misplaced,2.5,,0,0,Khammam,High,Direct Piggyback,8,686.2,170,Yes
 SHP-1036,Tata Motors,Nalgonda,Karimnagar,2026-09-16,2026-09-19,,Raw Materials,In Transit,4.0,TRK-037,16,6,Karimnagar,Medium,N/A,0,0,0,Yes
 SHP-1037,Zomato,Hyderabad,Mahbubnagar,2026-09-15,2026-09-17,2026-09-17,Packaging,Delivered,2.0,TRK-038,12,3,Mahbubnagar,Low,N/A,0,0,0,Yes
 SHP-1038,Swiggy,Warangal,Nizamabad,2026-09-16,2026-09-19,,Electronics,In Transit,5.5,TRK-039,18,7,Nizamabad,High,N/A,0,0,0,Yes
 SHP-1039,Blinkit,Adilabad,Hyderabad,2026-09-14,2026-09-18,2026-09-18,Office Supplies,Delivered,4.0,TRK-040,16,5,Hyderabad,Critical,N/A,0,0,0,Yes
-SHP-1040,DMart,Hyderabad,Karimnagar,2026-09-17,2026-09-19,,MRO,Pending,3.5,,0,0,Hyderabad,Medium,Pending,0,0,0,Yes
+SHP-1040,DMart,Hyderabad,Karimnagar,2026-09-17,2026-09-19,,MRO,Pending,3.5,,0,0,Hyderabad,Medium,Pending,0,509.4,0,Yes
 SHP-1041,Flipkart,Nizamabad,Warangal,2026-09-16,2026-09-19,,Raw Materials,In Transit,6.5,TRK-042,20,8,Warangal,High,N/A,0,0,0,Yes
 SHP-1042,Amazon,Khammam,Adilabad,2026-09-15,2026-09-19,2026-09-19,Electronics,Delivered,5.0,TRK-043,18,6,Adilabad,Medium,N/A,0,0,0,Yes
-SHP-1043,Reliance,Hyderabad,Warangal,2026-09-17,2026-09-19,,Packaging,Misplaced,3.0,,0,0,Nalgonda,Critical,Relay,12,640,220,Yes
+SHP-1043,Reliance,Hyderabad,Warangal,2026-09-17,2026-09-19,,Packaging,Misplaced,3.0,,0,0,Nalgonda,Critical,Relay,12,363.8,220,Yes
 SHP-1044,Tata Motors,Mahbubnagar,Khammam,2026-09-16,2026-09-19,,Office Supplies,In Transit,4.5,TRK-045,16,5,Khammam,High,N/A,0,0,0,Yes
 SHP-1045,Zomato,Karimnagar,Nizamabad,2026-09-15,2026-09-18,2026-09-18,Raw Materials,Delivered,5.5,TRK-046,18,7,Nizamabad,Medium,N/A,0,0,0,Yes
 SHP-1046,Swiggy,Hyderabad,Nalgonda,2026-09-17,2026-09-18,2026-09-18,MRO,Delivered,2.5,TRK-047,12,4,Nalgonda,Low,N/A,0,0,0,Yes
 SHP-1047,Blinkit,Warangal,Hyderabad,2026-09-16,2026-09-18,2026-09-18,Electronics,Delivered,3.5,TRK-048,14,5,Hyderabad,High,N/A,0,0,0,Yes
 SHP-1048,DMart,Adilabad,Karimnagar,2026-09-14,2026-09-18,2026-09-18,Office Supplies,Delivered,4.0,TRK-049,16,6,Karimnagar,Medium,N/A,0,0,0,Yes
 SHP-1049,Flipkart,Hyderabad,Adilabad,2026-09-15,2026-09-19,2026-09-19,Raw Materials,Delivered,7.5,TRK-050,20,10,Adilabad,High,N/A,0,0,0,Yes
-SHP-1050,Amazon,Nizamabad,Hyderabad,2026-09-17,2026-09-19,,Packaging,Misplaced,2.0,,0,0,Nizamabad,High,Direct Piggyback,6,460,150,Yes
+SHP-1050,Amazon,Nizamabad,Hyderabad,2026-09-17,2026-09-19,,Packaging,Misplaced,2.0,,0,0,Nizamabad,High,Direct Piggyback,6,561.8,150,Yes
 SHP-1051,Reliance,Khammam,Warangal,2026-09-16,2026-09-18,2026-09-18,Electronics,Delivered,3.0,TRK-002,16,6,Warangal,Medium,N/A,0,0,0,Yes
 SHP-1052,Tata Motors,Hyderabad,Mahbubnagar,2026-09-15,2026-09-17,2026-09-17,MRO,Delivered,4.5,TRK-004,14,8,Mahbubnagar,High,N/A,0,0,0,Yes
 SHP-1053,Zomato,Karimnagar,Adilabad,2026-09-16,2026-09-20,,Raw Materials,In Transit,6.0,TRK-006,18,4,Adilabad,Critical,N/A,0,0,0,Yes
 SHP-1054,Swiggy,Nalgonda,Hyderabad,2026-09-17,2026-09-18,2026-09-18,Office Supplies,Delivered,2.0,TRK-008,12,2,Hyderabad,Low,N/A,0,0,0,Yes
 SHP-1055,Blinkit,Hyderabad,Warangal,2026-09-15,2026-09-17,2026-09-17,Packaging,Delivered,3.5,TRK-009,20,8,Warangal,Medium,N/A,0,0,0,Yes
-SHP-1056,DMart,Warangal,Nizamabad,2026-09-16,2026-09-19,,Electronics,Misplaced,5.0,,0,0,Warangal,High,Relay,14,700,240,Yes
+SHP-1056,DMart,Warangal,Nizamabad,2026-09-16,2026-09-19,,Electronics,Misplaced,5.0,,0,0,Warangal,High,Relay,14,673.8,240,Yes
 SHP-1057,Flipkart,Mahbubnagar,Khammam,2026-09-15,2026-09-18,2026-09-18,Raw Materials,Delivered,4.0,TRK-011,12,4,Khammam,Medium,N/A,0,0,0,Yes
 SHP-1058,Amazon,Hyderabad,Karimnagar,2026-09-16,2026-09-19,,Office Supplies,In Transit,3.0,TRK-012,16,5,Karimnagar,High,N/A,0,0,0,Yes
 SHP-1059,Reliance,Nizamabad,Adilabad,2026-09-14,2026-09-18,2026-09-18,MRO,Delivered,5.5,TRK-013,18,6,Adilabad,Medium,N/A,0,0,0,Yes
@@ -63,7 +63,7 @@ SHP-1061,Zomato,Hyderabad,Warangal,2026-09-15,2026-09-17,2026-09-17,Raw Material
 SHP-1062,Swiggy,Karimnagar,Hyderabad,2026-09-16,2026-09-18,2026-09-18,Electronics,Delivered,3.0,TRK-016,14,6,Hyderabad,Critical,N/A,0,0,0,Yes
 SHP-1063,Blinkit,Adilabad,Warangal,2026-09-14,2026-09-18,2026-09-18,Office Supplies,Delivered,4.5,TRK-017,12,4,Warangal,Medium,N/A,0,0,0,Yes
 SHP-1064,DMart,Hyderabad,Nizamabad,2026-09-17,2026-09-20,,MRO,In Transit,5.0,TRK-018,18,7,Nizamabad,High,N/A,0,0,0,Yes
-SHP-1065,Flipkart,Nalgonda,Karimnagar,2026-09-16,2026-09-19,,Packaging,Misplaced,2.5,,0,0,Nalgonda,Critical,Direct Piggyback,10,580,190,Yes
+SHP-1065,Flipkart,Nalgonda,Karimnagar,2026-09-16,2026-09-19,,Packaging,Misplaced,2.5,,0,0,Nalgonda,Critical,Direct Piggyback,10,579.3,190,Yes
 SHP-1066,Amazon,Mahbubnagar,Adilabad,2026-09-15,2026-09-19,2026-09-19,Raw Materials,Delivered,6.0,TRK-020,14,4,Adilabad,High,N/A,0,0,0,Yes
 SHP-1067,Reliance,Hyderabad,Khammam,2026-09-16,2026-09-18,2026-09-18,Electronics,Delivered,3.5,TRK-021,20,8,Khammam,Medium,N/A,0,0,0,Yes
 SHP-1068,Tata Motors,Warangal,Nalgonda,2026-09-17,2026-09-19,,Office Supplies,In Transit,4.0,TRK-022,12,3,Nalgonda,High,N/A,0,0,0,Yes
@@ -72,36 +72,36 @@ SHP-1070,Swiggy,Karimnagar,Warangal,2026-09-16,2026-09-18,2026-09-18,Packaging,D
 SHP-1071,Blinkit,Hyderabad,Adilabad,2026-09-14,2026-09-18,2026-09-18,Raw Materials,Delivered,7.0,TRK-025,20,7,Adilabad,High,N/A,0,0,0,Yes
 SHP-1072,DMart,Khammam,Mahbubnagar,2026-09-17,2026-09-20,,Electronics,In Transit,4.5,TRK-026,14,4,Mahbubnagar,Medium,N/A,0,0,0,Yes
 SHP-1073,Flipkart,Hyderabad,Warangal,2026-09-15,2026-09-17,2026-09-17,Office Supplies,Delivered,3.0,TRK-027,12,2,Warangal,Low,N/A,0,0,0,Yes
-SHP-1074,Amazon,Nalgonda,Nizamabad,2026-09-16,2026-09-19,,MRO,Misplaced,5.0,,0,0,Nalgonda,High,Relay,11,620,210,Yes
+SHP-1074,Amazon,Nalgonda,Nizamabad,2026-09-16,2026-09-19,,MRO,Misplaced,5.0,,0,0,Nalgonda,High,Relay,11,866.2,210,Yes
 SHP-1075,Reliance,Warangal,Adilabad,2026-09-14,2026-09-18,2026-09-18,Packaging,Delivered,3.5,TRK-029,16,4,Adilabad,Medium,N/A,0,0,0,Yes
 SHP-1076,Tata Motors,Hyderabad,Karimnagar,2026-09-17,2026-09-19,2026-09-19,Raw Materials,Delivered,6.0,TRK-030,14,5,Karimnagar,High,N/A,0,0,0,Yes
 SHP-1077,Zomato,Mahbubnagar,Hyderabad,2026-09-15,2026-09-17,2026-09-17,Electronics,Delivered,4.0,TRK-031,16,6,Hyderabad,Critical,N/A,0,0,0,Yes
 SHP-1078,Swiggy,Karimnagar,Khammam,2026-09-16,2026-09-19,,Office Supplies,In Transit,2.5,TRK-032,12,3,Khammam,Medium,N/A,0,0,0,Yes
 SHP-1079,Blinkit,Adilabad,Hyderabad,2026-09-14,2026-09-18,2026-09-18,MRO,Delivered,5.5,TRK-033,18,5,Hyderabad,High,N/A,0,0,0,Yes
-SHP-1080,DMart,Hyderabad,Warangal,2026-09-17,2026-09-19,,Packaging,Misplaced,3.0,,0,0,Nalgonda,Critical,Direct Piggyback,8,520,170,Yes
+SHP-1080,DMart,Hyderabad,Warangal,2026-09-17,2026-09-19,,Packaging,Misplaced,3.0,,0,0,Nalgonda,Critical,Direct Piggyback,8,369.8,170,Yes
 SHP-1081,Flipkart,Nizamabad,Karimnagar,2026-09-15,2026-09-18,2026-09-18,Raw Materials,Delivered,4.5,TRK-035,14,4,Karimnagar,High,N/A,0,0,0,Yes
 SHP-1082,Amazon,Khammam,Warangal,2026-09-16,2026-09-18,2026-09-18,Electronics,Delivered,3.5,TRK-036,16,5,Warangal,Medium,N/A,0,0,0,Yes
 SHP-1083,Reliance,Hyderabad,Mahbubnagar,2026-09-17,2026-09-19,,Office Supplies,In Transit,4.0,TRK-037,16,6,Mahbubnagar,High,N/A,0,0,0,Yes
 SHP-1084,Tata Motors,Warangal,Nizamabad,2026-09-15,2026-09-19,2026-09-19,MRO,Delivered,5.0,TRK-038,12,3,Nizamabad,Medium,N/A,0,0,0,Yes
 SHP-1085,Zomato,Nalgonda,Adilabad,2026-09-16,2026-09-20,,Packaging,In Transit,3.5,TRK-039,18,7,Adilabad,Critical,N/A,0,0,0,Yes
 SHP-1086,Swiggy,Hyderabad,Khammam,2026-09-14,2026-09-17,2026-09-17,Raw Materials,Delivered,6.5,TRK-040,16,5,Khammam,High,N/A,0,0,0,Yes
-SHP-1087,Blinkit,Mahbubnagar,Warangal,2026-09-17,2026-09-19,,Electronics,Misplaced,2.0,,0,0,Mahbubnagar,High,Relay,9,560,185,Yes
+SHP-1087,Blinkit,Mahbubnagar,Warangal,2026-09-17,2026-09-19,,Electronics,Misplaced,2.0,,0,0,Mahbubnagar,High,Relay,9,868.0,185,Yes
 SHP-1088,DMart,Karimnagar,Hyderabad,2026-09-16,2026-09-18,2026-09-18,Office Supplies,Delivered,3.0,TRK-042,20,8,Hyderabad,Medium,N/A,0,0,0,Yes
 SHP-1089,Flipkart,Hyderabad,Adilabad,2026-09-15,2026-09-19,2026-09-19,MRO,Delivered,7.0,TRK-043,18,6,Adilabad,High,N/A,0,0,0,Yes
 SHP-1090,Amazon,Nizamabad,Nalgonda,2026-09-16,2026-09-19,,Packaging,In Transit,4.5,TRK-044,16,5,Nalgonda,Medium,N/A,0,0,0,Yes
-SHP-1091,Reliance,Khammam,Hyderabad,2026-09-17,2026-09-19,,Raw Materials,Misplaced,3.5,,0,0,Khammam,Critical,Direct Piggyback,7,490,165,Yes
+SHP-1091,Reliance,Khammam,Hyderabad,2026-09-17,2026-09-19,,Raw Materials,Misplaced,3.5,,0,0,Khammam,Critical,Direct Piggyback,7,687.7,165,Yes
 SHP-1092,Tata Motors,Warangal,Karimnagar,2026-09-15,2026-09-18,2026-09-18,Electronics,Delivered,5.0,TRK-046,18,7,Karimnagar,High,N/A,0,0,0,Yes
 SHP-1093,Zomato,Hyderabad,Warangal,2026-09-16,2026-09-18,2026-09-18,Office Supplies,Delivered,2.5,TRK-047,12,4,Warangal,Low,N/A,0,0,0,Yes
 SHP-1094,Swiggy,Adilabad,Mahbubnagar,2026-09-14,2026-09-18,2026-09-18,MRO,Delivered,6.0,TRK-048,14,5,Mahbubnagar,Medium,N/A,0,0,0,Yes
 SHP-1095,Blinkit,Nalgonda,Hyderabad,2026-09-17,2026-09-18,2026-09-18,Raw Materials,Delivered,3.0,TRK-049,16,6,Hyderabad,High,N/A,0,0,0,Yes
 SHP-1096,DMart,Hyderabad,Nizamabad,2026-09-15,2026-09-19,2026-09-19,Packaging,Delivered,4.5,TRK-050,20,10,Nizamabad,Medium,N/A,0,0,0,Yes
 SHP-1097,Flipkart,Karimnagar,Warangal,2026-09-16,2026-09-19,,Electronics,In Transit,5.5,TRK-002,16,6,Warangal,High,N/A,0,0,0,Yes
-SHP-1098,Amazon,Hyderabad,Khammam,2026-09-17,2026-09-19,,MRO,Misplaced,2.5,,0,0,Nalgonda,High,Relay,10,600,200,Yes
+SHP-1098,Amazon,Hyderabad,Khammam,2026-09-17,2026-09-19,,MRO,Misplaced,2.5,,0,0,Nalgonda,High,Relay,10,317.7,200,Yes
 SHP-1099,Reliance,Mahbubnagar,Adilabad,2026-09-15,2026-09-19,2026-09-19,Office Supplies,Delivered,6.5,TRK-006,18,4,Adilabad,Medium,N/A,0,0,0,Yes
 SHP-1100,Tata Motors,Warangal,Hyderabad,2026-09-16,2026-09-18,2026-09-18,Raw Materials,Delivered,3.5,TRK-008,12,2,Hyderabad,Critical,N/A,0,0,0,Yes
 SHP-1101,Zomato,Nizamabad,Warangal,2026-09-17,2026-09-20,,Electronics,In Transit,4.0,TRK-009,20,8,Warangal,High,N/A,0,0,0,Yes
 SHP-1102,Swiggy,Hyderabad,Adilabad,2026-09-15,2026-09-19,2026-09-19,Packaging,Delivered,5.0,TRK-011,12,4,Adilabad,Medium,N/A,0,0,0,Yes
-SHP-1103,Blinkit,Khammam,Karimnagar,2026-09-16,2026-09-19,,MRO,Misplaced,3.0,,0,0,Khammam,High,Direct Piggyback,12,640,220,Yes
+SHP-1103,Blinkit,Khammam,Karimnagar,2026-09-16,2026-09-19,,MRO,Misplaced,3.0,,0,0,Khammam,High,Direct Piggyback,12,651.8,220,Yes
 SHP-1104,DMart,Hyderabad,Warangal,2026-09-14,2026-09-17,2026-09-17,Office Supplies,Delivered,4.5,TRK-013,18,6,Warangal,High,N/A,0,0,0,Yes
 SHP-1105,Flipkart,Nalgonda,Nizamabad,2026-09-17,2026-09-20,,Raw Materials,In Transit,6.0,TRK-014,12,2,Nizamabad,Medium,N/A,0,0,0,Yes
 SHP-1106,Amazon,Karimnagar,Hyderabad,2026-09-15,2026-09-17,2026-09-17,Electronics,Delivered,3.5,TRK-015,20,10,Hyderabad,Critical,N/A,0,0,0,Yes
@@ -113,14 +113,14 @@ SHP-1111,Blinkit,Nizamabad,Hyderabad,2026-09-15,2026-09-18,2026-09-18,Office Sup
 SHP-1112,DMart,Khammam,Adilabad,2026-09-16,2026-09-20,,Packaging,In Transit,4.5,TRK-021,20,8,Adilabad,High,N/A,0,0,0,Yes
 SHP-1113,Flipkart,Hyderabad,Nalgonda,2026-09-17,2026-09-18,2026-09-18,MRO,Delivered,2.0,TRK-022,12,3,Nalgonda,Low,N/A,0,0,0,Yes
 SHP-1114,Amazon,Mahbubnagar,Warangal,2026-09-14,2026-09-18,2026-09-18,Raw Materials,Delivered,6.0,TRK-023,16,5,Warangal,Medium,N/A,0,0,0,Yes
-SHP-1115,Reliance,Karimnagar,Adilabad,2026-09-16,2026-09-20,,Electronics,Misplaced,5.5,,0,0,Karimnagar,High,Relay,13,680,235,Yes
+SHP-1115,Reliance,Karimnagar,Adilabad,2026-09-16,2026-09-20,,Electronics,Misplaced,5.5,,0,0,Karimnagar,High,Relay,13,555.5,235,Yes
 SHP-1116,Tata Motors,Hyderabad,Warangal,2026-09-15,2026-09-17,2026-09-17,Office Supplies,Delivered,3.5,TRK-025,20,7,Warangal,High,N/A,0,0,0,Yes
 SHP-1117,Zomato,Nizamabad,Khammam,2026-09-17,2026-09-20,,MRO,In Transit,4.0,TRK-026,14,4,Khammam,Medium,N/A,0,0,0,Yes
 SHP-1118,Swiggy,Warangal,Hyderabad,2026-09-16,2026-09-18,2026-09-18,Packaging,Delivered,2.5,TRK-027,12,2,Hyderabad,Low,N/A,0,0,0,Yes
 SHP-1119,Blinkit,Adilabad,Nizamabad,2026-09-14,2026-09-18,2026-09-18,Raw Materials,Delivered,5.0,TRK-028,18,6,Nizamabad,Medium,N/A,0,0,0,Yes
 SHP-1120,DMart,Hyderabad,Mahbubnagar,2026-09-17,2026-09-19,2026-09-19,Electronics,Delivered,4.5,TRK-029,16,4,Mahbubnagar,High,N/A,0,0,0,Yes
 SHP-1121,Flipkart,Khammam,Warangal,2026-09-15,2026-09-18,2026-09-18,Office Supplies,Delivered,3.0,TRK-030,14,5,Warangal,Medium,N/A,0,0,0,Yes
-SHP-1122,Amazon,Hyderabad,Karimnagar,2026-09-16,2026-09-19,,MRO,Misplaced,4.0,,0,0,Nalgonda,Critical,Direct Piggyback,9,560,185,Yes
+SHP-1122,Amazon,Hyderabad,Karimnagar,2026-09-16,2026-09-19,,MRO,Misplaced,4.0,,0,0,Nalgonda,Critical,Direct Piggyback,9,580.8,185,Yes
 SHP-1123,Reliance,Nalgonda,Adilabad,2026-09-14,2026-09-18,2026-09-18,Packaging,Delivered,5.5,TRK-032,12,3,Adilabad,High,N/A,0,0,0,Yes
 SHP-1124,Tata Motors,Warangal,Nizamabad,2026-09-17,2026-09-20,,Raw Materials,In Transit,6.5,TRK-033,18,5,Nizamabad,Medium,N/A,0,0,0,Yes
 SHP-1125,Zomato,Hyderabad,Warangal,2026-09-15,2026-09-17,2026-09-17,Electronics,Delivered,3.5,TRK-034,20,9,Warangal,High,N/A,0,0,0,Yes
@@ -130,7 +130,7 @@ SHP-1128,DMart,Hyderabad,Adilabad,2026-09-15,2026-09-19,2026-09-19,Raw Materials
 SHP-1129,Flipkart,Nizamabad,Warangal,2026-09-16,2026-09-19,,Packaging,In Transit,3.0,TRK-038,12,3,Warangal,Medium,N/A,0,0,0,Yes
 SHP-1130,Amazon,Hyderabad,Nalgonda,2026-09-17,2026-09-18,2026-09-18,Electronics,Delivered,2.5,TRK-039,18,7,Nalgonda,High,N/A,0,0,0,Yes
 SHP-1131,Reliance,Khammam,Karimnagar,2026-09-15,2026-09-19,2026-09-19,Office Supplies,Delivered,4.0,TRK-040,16,5,Karimnagar,Medium,N/A,0,0,0,Yes
-SHP-1132,Tata Motors,Warangal,Adilabad,2026-09-16,2026-09-20,,MRO,Misplaced,5.0,,0,0,Warangal,High,Relay,12,640,220,Yes
+SHP-1132,Tata Motors,Warangal,Adilabad,2026-09-16,2026-09-20,,MRO,Misplaced,5.0,,0,0,Warangal,High,Relay,12,868.1,220,Yes
 SHP-1133,Zomato,Hyderabad,Mahbubnagar,2026-09-14,2026-09-17,2026-09-17,Raw Materials,Delivered,3.5,TRK-042,20,8,Mahbubnagar,High,N/A,0,0,0,Yes
 SHP-1134,Swiggy,Nalgonda,Hyderabad,2026-09-17,2026-09-19,2026-09-19,Packaging,Delivered,2.0,TRK-043,18,6,Hyderabad,Low,N/A,0,0,0,Yes
 SHP-1135,Blinkit,Karimnagar,Warangal,2026-09-16,2026-09-19,,Electronics,In Transit,4.5,TRK-044,16,5,Warangal,Medium,N/A,0,0,0,Yes
@@ -139,7 +139,7 @@ SHP-1137,Flipkart,Adilabad,Hyderabad,2026-09-14,2026-09-18,2026-09-18,Raw Materi
 SHP-1138,Amazon,Nizamabad,Karimnagar,2026-09-17,2026-09-20,,MRO,In Transit,3.5,TRK-047,12,4,Karimnagar,High,N/A,0,0,0,Yes
 SHP-1139,Reliance,Hyderabad,Warangal,2026-09-16,2026-09-18,2026-09-18,Packaging,Delivered,2.5,TRK-048,14,5,Warangal,Low,N/A,0,0,0,Yes
 SHP-1140,Tata Motors,Mahbubnagar,Nizamabad,2026-09-15,2026-09-19,2026-09-19,Electronics,Delivered,5.5,TRK-049,16,6,Nizamabad,High,N/A,0,0,0,Yes
-SHP-1141,Zomato,Khammam,Hyderabad,2026-09-17,2026-09-19,,Office Supplies,Misplaced,3.0,,0,0,Khammam,Critical,Direct Piggyback,8,520,170,Yes
+SHP-1141,Zomato,Khammam,Hyderabad,2026-09-17,2026-09-19,,Office Supplies,Misplaced,3.0,,0,0,Khammam,Critical,Direct Piggyback,8,686.2,170,Yes
 SHP-1142,Swiggy,Warangal,Adilabad,2026-09-15,2026-09-19,2026-09-19,Raw Materials,Delivered,6.5,TRK-002,16,6,Adilabad,Medium,N/A,0,0,0,Yes
 SHP-1143,Blinkit,Hyderabad,Nalgonda,2026-09-16,2026-09-17,2026-09-17,MRO,Delivered,2.0,TRK-004,14,8,Nalgonda,Low,N/A,0,0,0,Yes
 SHP-1144,DMart,Karimnagar,Adilabad,2026-09-17,2026-09-21,,Packaging,In Transit,4.0,TRK-006,18,4,Adilabad,Medium,N/A,0,0,0,Yes
@@ -148,7 +148,7 @@ SHP-1146,Amazon,Hyderabad,Warangal,2026-09-16,2026-09-18,2026-09-18,Office Suppl
 SHP-1147,Reliance,Mahbubnagar,Khammam,2026-09-17,2026-09-20,,MRO,In Transit,5.0,TRK-011,12,4,Khammam,High,N/A,0,0,0,Yes
 SHP-1148,Tata Motors,Adilabad,Karimnagar,2026-09-15,2026-09-19,2026-09-19,Raw Materials,Delivered,4.5,TRK-012,16,5,Karimnagar,Medium,N/A,0,0,0,Yes
 SHP-1149,Zomato,Hyderabad,Nizamabad,2026-09-16,2026-09-19,2026-09-19,Packaging,Delivered,3.0,TRK-013,18,6,Nizamabad,High,N/A,0,0,0,Yes
-SHP-1150,Swiggy,Warangal,Hyderabad,2026-09-17,2026-09-19,,Electronics,Misplaced,2.5,,0,0,Warangal,Critical,Relay,10,600,200,Yes
+SHP-1150,Swiggy,Warangal,Hyderabad,2026-09-17,2026-09-19,,Electronics,Misplaced,2.5,,0,0,Warangal,Critical,Relay,10,488.4,200,Yes
 SHP-1151,Blinkit,Khammam,Nalgonda,2026-09-15,2026-09-18,2026-09-18,Office Supplies,Delivered,4.0,TRK-015,20,10,Nalgonda,Medium,N/A,0,0,0,Yes
 SHP-1152,DMart,Nizamabad,Adilabad,2026-09-16,2026-09-20,,Raw Materials,In Transit,6.0,TRK-016,14,6,Adilabad,High,N/A,0,0,0,Yes
 SHP-1153,Flipkart,Hyderabad,Warangal,2026-09-17,2026-09-19,2026-09-19,MRO,Delivered,3.5,TRK-017,12,4,Warangal,Medium,N/A,0,0,0,Yes
@@ -156,7 +156,7 @@ SHP-1154,Amazon,Karimnagar,Hyderabad,2026-09-15,2026-09-17,2026-09-17,Packaging,
 SHP-1155,Reliance,Hyderabad,Mahbubnagar,2026-09-16,2026-09-18,2026-09-18,Electronics,Delivered,4.5,TRK-019,18,6,Mahbubnagar,High,N/A,0,0,0,Yes
 SHP-1156,Tata Motors,Adilabad,Warangal,2026-09-17,2026-09-21,,Office Supplies,In Transit,5.5,TRK-020,14,4,Warangal,Medium,N/A,0,0,0,Yes
 SHP-1157,Zomato,Nalgonda,Khammam,2026-09-15,2026-09-18,2026-09-18,Raw Materials,Delivered,6.0,TRK-021,20,8,Khammam,High,N/A,0,0,0,Yes
-SHP-1158,Swiggy,Hyderabad,Karimnagar,2026-09-16,2026-09-19,,MRO,Misplaced,3.0,,0,0,Nalgonda,Critical,Direct Piggyback,11,620,210,Yes
+SHP-1158,Swiggy,Hyderabad,Karimnagar,2026-09-16,2026-09-19,,MRO,Misplaced,3.0,,0,0,Nalgonda,Critical,Direct Piggyback,11,577.8,210,Yes
 SHP-1159,Blinkit,Warangal,Nizamabad,2026-09-17,2026-09-20,,Packaging,In Transit,4.5,TRK-023,16,5,Nizamabad,High,N/A,0,0,0,Yes
 SHP-1160,DMart,Mahbubnagar,Hyderabad,2026-09-15,2026-09-17,2026-09-17,Electronics,Delivered,3.5,TRK-024,18,6,Hyderabad,Medium,N/A,0,0,0,Yes
 SHP-1161,Flipkart,Khammam,Adilabad,2026-09-16,2026-09-20,,Office Supplies,In Transit,5.0,TRK-025,20,7,Adilabad,High,N/A,0,0,0,Yes
@@ -166,7 +166,7 @@ SHP-1164,Tata Motors,Karimnagar,Warangal,2026-09-16,2026-09-19,,Packaging,In Tra
 SHP-1165,Zomato,Hyderabad,Adilabad,2026-09-17,2026-09-21,,Electronics,In Transit,6.5,TRK-029,16,4,Adilabad,High,N/A,0,0,0,Yes
 SHP-1166,Swiggy,Warangal,Hyderabad,2026-09-15,2026-09-17,2026-09-17,Office Supplies,Delivered,2.5,TRK-030,14,5,Hyderabad,Critical,N/A,0,0,0,Yes
 SHP-1167,Blinkit,Adilabad,Khammam,2026-09-16,2026-09-20,,Raw Materials,In Transit,4.5,TRK-031,16,6,Khammam,Medium,N/A,0,0,0,Yes
-SHP-1168,DMart,Hyderabad,Karimnagar,2026-09-17,2026-09-20,,MRO,Misplaced,3.5,,0,0,Hyderabad,High,Relay,13,680,235,Yes
+SHP-1168,DMart,Hyderabad,Karimnagar,2026-09-17,2026-09-20,,MRO,Misplaced,3.5,,0,0,Hyderabad,High,Relay,13,489.9,235,Yes
 SHP-1169,Flipkart,Nalgonda,Warangal,2026-09-15,2026-09-18,2026-09-18,Packaging,Delivered,4.0,TRK-033,18,5,Warangal,Medium,N/A,0,0,0,Yes
 SHP-1170,Amazon,Mahbubnagar,Adilabad,2026-09-16,2026-09-20,,Electronics,In Transit,5.0,TRK-034,20,9,Adilabad,High,N/A,0,0,0,Yes
 SHP-1171,Reliance,Hyderabad,Warangal,2026-09-17,2026-09-19,2026-09-19,Office Supplies,Delivered,3.0,TRK-035,14,4,Warangal,Medium,N/A,0,0,0,Yes
@@ -175,7 +175,7 @@ SHP-1173,Zomato,Warangal,Karimnagar,2026-09-16,2026-09-19,,MRO,In Transit,4.0,TR
 SHP-1174,Swiggy,Hyderabad,Mahbubnagar,2026-09-17,2026-09-19,2026-09-19,Packaging,Delivered,2.0,TRK-038,12,3,Mahbubnagar,Low,N/A,0,0,0,Yes
 SHP-1175,Blinkit,Nizamabad,Adilabad,2026-09-15,2026-09-19,2026-09-19,Electronics,Delivered,5.5,TRK-039,18,7,Adilabad,High,N/A,0,0,0,Yes
 SHP-1176,DMart,Hyderabad,Khammam,2026-09-16,2026-09-18,2026-09-18,Office Supplies,Delivered,3.5,TRK-040,16,5,Khammam,Medium,N/A,0,0,0,Yes
-SHP-1177,Flipkart,Karimnagar,Hyderabad,2026-09-17,2026-09-19,,Raw Materials,Misplaced,4.5,,0,0,Karimnagar,Critical,Direct Piggyback,7,490,165,Yes
+SHP-1177,Flipkart,Karimnagar,Hyderabad,2026-09-17,2026-09-19,,Raw Materials,Misplaced,4.5,,0,0,Karimnagar,Critical,Direct Piggyback,7,498.9,165,Yes
 SHP-1178,Amazon,Adilabad,Warangal,2026-09-15,2026-09-19,2026-09-19,MRO,Delivered,6.0,TRK-042,20,8,Warangal,High,N/A,0,0,0,Yes
 SHP-1179,Reliance,Hyderabad,Nalgonda,2026-09-16,2026-09-18,2026-09-18,Packaging,Delivered,2.5,TRK-043,18,6,Nalgonda,Low,N/A,0,0,0,Yes
 SHP-1180,Tata Motors,Warangal,Nizamabad,2026-09-17,2026-09-20,,Electronics,In Transit,5.0,TRK-044,16,5,Nizamabad,Medium,N/A,0,0,0,Yes
@@ -184,7 +184,7 @@ SHP-1182,Swiggy,Hyderabad,Warangal,2026-09-16,2026-09-18,2026-09-18,Raw Material
 SHP-1183,Blinkit,Mahbubnagar,Karimnagar,2026-09-17,2026-09-20,,MRO,In Transit,5.5,TRK-047,12,4,Karimnagar,High,N/A,0,0,0,Yes
 SHP-1184,DMart,Nizamabad,Hyderabad,2026-09-15,2026-09-18,2026-09-18,Packaging,Delivered,2.0,TRK-048,14,5,Hyderabad,Low,N/A,0,0,0,Yes
 SHP-1185,Flipkart,Hyderabad,Adilabad,2026-09-16,2026-09-20,,Electronics,In Transit,6.5,TRK-049,16,6,Adilabad,High,N/A,0,0,0,Yes
-SHP-1186,Amazon,Karimnagar,Khammam,2026-09-17,2026-09-20,,Office Supplies,Misplaced,3.5,,0,0,Karimnagar,High,Relay,11,620,210,Yes
+SHP-1186,Amazon,Karimnagar,Khammam,2026-09-17,2026-09-20,,Office Supplies,Misplaced,3.5,,0,0,Karimnagar,High,Relay,11,653.3,210,Yes
 SHP-1187,Reliance,Warangal,Hyderabad,2026-09-15,2026-09-17,2026-09-17,Raw Materials,Delivered,4.0,TRK-002,16,6,Hyderabad,Medium,N/A,0,0,0,Yes
 SHP-1188,Tata Motors,Adilabad,Nalgonda,2026-09-16,2026-09-20,,MRO,In Transit,5.0,TRK-004,14,8,Nalgonda,High,N/A,0,0,0,Yes
 SHP-1189,Zomato,Hyderabad,Warangal,2026-09-17,2026-09-19,2026-09-19,Packaging,Delivered,3.0,TRK-006,18,4,Warangal,Medium,N/A,0,0,0,Yes
@@ -193,7 +193,7 @@ SHP-1191,Blinkit,Khammam,Adilabad,2026-09-16,2026-09-20,,Office Supplies,In Tran
 SHP-1192,DMart,Hyderabad,Karimnagar,2026-09-17,2026-09-20,,Raw Materials,In Transit,6.0,TRK-011,12,4,Karimnagar,Medium,N/A,0,0,0,Yes
 SHP-1193,Flipkart,Mahbubnagar,Warangal,2026-09-15,2026-09-18,2026-09-18,MRO,Delivered,3.5,TRK-012,16,5,Warangal,High,N/A,0,0,0,Yes
 SHP-1194,Amazon,Nizamabad,Hyderabad,2026-09-16,2026-09-18,2026-09-18,Packaging,Delivered,2.5,TRK-013,18,6,Hyderabad,Medium,N/A,0,0,0,Yes
-SHP-1195,Reliance,Warangal,Khammam,2026-09-17,2026-09-19,,Electronics,Misplaced,4.0,,0,0,Warangal,Critical,Direct Piggyback,9,560,185,Yes
+SHP-1195,Reliance,Warangal,Khammam,2026-09-17,2026-09-19,,Electronics,Misplaced,4.0,,0,0,Warangal,Critical,Direct Piggyback,9,334.8,185,Yes
 SHP-1196,Tata Motors,Hyderabad,Adilabad,2026-09-15,2026-09-19,2026-09-19,Office Supplies,Delivered,5.0,TRK-015,20,10,Adilabad,High,N/A,0,0,0,Yes
 SHP-1197,Zomato,Karimnagar,Nalgonda,2026-09-16,2026-09-19,,Raw Materials,In Transit,3.0,TRK-016,14,6,Nalgonda,Medium,N/A,0,0,0,Yes
 SHP-1198,Swiggy,Adilabad,Hyderabad,2026-09-17,2026-09-20,,MRO,In Transit,4.5,TRK-017,12,4,Hyderabad,High,N/A,0,0,0,Yes
