@@ -53,6 +53,26 @@ def find_piggyback_candidates(shipment: Dict[str, Any], trucks: List[Dict[str, A
         has_misplaced = misplaced_hub_id in route_ids
         has_dest = dest_hub_id in route_ids
 
+        # Check if truck is mid-route en-route with precise GPS
+        curr_lat = t.get("current_lat")
+        curr_lng = t.get("current_lng")
+        
+        # Calculate pickup distance from truck's current position to misplaced hub
+        if curr_lat is not None and curr_lng is not None:
+            from routing_engine import haversine_distance
+            m_hub = HUB_MAP.get(misplaced_hub_id, {})
+            if m_hub and "lat" in m_hub and "lng" in m_hub:
+                dist_to_pickup = round(haversine_distance(float(curr_lat), float(curr_lng), float(m_hub["lat"]), float(m_hub["lng"])), 1)
+            else:
+                dist_to_pickup = get_distance(resolve_hub_id(t.get("current_hub") or "H01"), misplaced_hub_id)
+        else:
+            curr_pos_hub = resolve_hub_id(t.get("current_hub", route_ids[0] if route_ids else "H01"))
+            dist_to_pickup = get_distance(curr_pos_hub, misplaced_hub_id)
+
+        # Check if truck is a mid-route GPS spawned vehicle
+        loc_str = str(t.get("current_location", ""))
+        is_midroute = bool("," in loc_str and curr_lat is not None and curr_lng is not None)
+
         can_direct = False
         detour_km = 0.0
         mode = "Direct Piggyback"
@@ -62,16 +82,21 @@ def find_piggyback_candidates(shipment: Dict[str, Any], trucks: List[Dict[str, A
             idx_pickup = route_ids.index(misplaced_hub_id)
             idx_dropoff = route_ids.index(dest_hub_id)
             if idx_pickup < idx_dropoff:
-                can_direct = True
-                detour_km = 0.0
-                mode = "Direct Piggyback"
-                alignment_score = 100.0
+                if not is_midroute:
+                    can_direct = True
+                    detour_km = 0.0
+                    mode = "Direct Piggyback"
+                    alignment_score = 100.0
+                else:
+                    can_direct = True
+                    detour_km = round(dist_to_pickup * 0.3, 1)
+                    mode = "Detour Piggyback" if detour_km > 0 else "Direct Piggyback"
+                    alignment_score = max(75.0, round(98.0 - (detour_km * 0.8), 1))
 
         if not can_direct:
             curr_pos_hub = resolve_hub_id(t.get("current_hub", route_ids[0] if route_ids else "H01"))
             dest_pos_hub = resolve_hub_id(t.get("destination", route_ids[-1] if route_ids else "H02"))
             
-            dist_to_pickup = get_distance(curr_pos_hub, misplaced_hub_id)
             dist_pickup_to_dest = get_distance(misplaced_hub_id, dest_hub_id)
             dist_dest_to_end = get_distance(dest_hub_id, dest_pos_hub)
             base_truck_dist = get_distance(curr_pos_hub, dest_pos_hub)
@@ -130,7 +155,11 @@ def find_piggyback_candidates(shipment: Dict[str, Any], trucks: List[Dict[str, A
                 "spare_capacity_tons": spare_cap_tons,
                 "available_capacity_kg": avail_cap_kg,
                 "weight_kg": weight_kg,
+                "current_location": t.get("current_location"),
                 "current_hub": t.get("current_hub"),
+                "current_lat": curr_lat,
+                "current_lng": curr_lng,
+                "distance_to_stranded_km": round(dist_to_pickup, 1),
                 "destination": t.get("destination"),
                 "route": route_ids,
                 "recovery_mode": mode,

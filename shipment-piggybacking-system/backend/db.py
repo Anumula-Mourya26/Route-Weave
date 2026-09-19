@@ -41,12 +41,53 @@ def _load_local_data():
                 _local_trucks = []
                 for r in csv.DictReader(f):
                     v_id = r["Vehicle_ID"].strip()
-                    loc_id = r["Current_Location"].strip()
-                    loc_hub = HUB_MAP.get(loc_id, {})
-                    lat = loc_hub.get("lat", 17.3850)
-                    lng = loc_hub.get("lng", 78.4867)
+                    loc_raw = r["Current_Location"].strip()
+                    lat = None
+                    lng = None
+                    loc_hub_id = loc_raw
+
+                    # 1. Check for explicit Current_Lat / Current_Lng columns
+                    if "Current_Lat" in r and "Current_Lng" in r and r["Current_Lat"] and r["Current_Lng"]:
+                        try:
+                            lat = float(r["Current_Lat"])
+                            lng = float(r["Current_Lng"])
+                        except ValueError:
+                            pass
+
+                    # 2. Parse coordinates from Current_Location if comma-separated (e.g. "17.1593, 79.30645")
+                    if (lat is None or lng is None) and "," in loc_raw:
+                        try:
+                            parts = [p.strip().strip("()[]") for p in loc_raw.split(",")]
+                            lat = float(parts[0])
+                            lng = float(parts[1])
+                        except ValueError:
+                            pass
+
+                    # 3. Resolve from Hub ID
+                    if lat is None or lng is None:
+                        loc_hub = HUB_MAP.get(loc_raw) or HUB_BY_NAME.get(loc_raw.lower()) or {}
+                        lat = float(loc_hub.get("lat", 17.3850))
+                        lng = float(loc_hub.get("lng", 78.4867))
+                        loc_hub_id = loc_hub.get("hub_id", loc_raw)
+                    else:
+                        from routing_engine import haversine_distance
+                        if loc_raw in HUB_MAP:
+                            loc_hub_id = loc_raw
+                        else:
+                            nearest_hub = min(TELANGANA_HUBS, key=lambda h: haversine_distance(lat, lng, h["lat"], h["lng"]))
+                            loc_hub_id = nearest_hub["hub_id"]
+
                     dest_id = r["Destination"].strip()
-                    v_route = route_map.get(r["Current_Route_ID"].strip(), [loc_id, dest_id])
+                    raw_route_field = r.get("Route", "")
+                    if raw_route_field and "[" in raw_route_field:
+                        import json
+                        try:
+                            v_route = json.loads(raw_route_field.replace("'", '"'))
+                        except Exception:
+                            v_route = [loc_hub_id, dest_id]
+                    else:
+                        v_route = route_map.get(r.get("Current_Route_ID", "").strip(), [loc_hub_id, dest_id])
+
                     if v_id == "V004":
                         v_route = ["H06", "H01", "H07", "H02"]
                     elif v_id == "V001":
@@ -73,7 +114,8 @@ def _load_local_data():
                         "available_capacity_kg": float(r["Available_Capacity_kg"]),
                         "max_weight_kg": float(r["Max_Weight_kg"]),
                         "current_load_kg": float(r["Current_Load_kg"]),
-                        "current_hub": loc_id,
+                        "current_location": loc_raw,
+                        "current_hub": loc_hub_id,
                         "current_lat": lat,
                         "current_lng": lng,
                         "destination": dest_id,

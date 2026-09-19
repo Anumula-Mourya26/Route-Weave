@@ -14,10 +14,15 @@ class TruckModel(BaseModel):
     capacity_tons: float
     current_load_tons: float
     spare_capacity_tons: float
+    available_capacity_kg: Optional[float] = None
+    max_weight_kg: Optional[float] = None
+    current_load_kg: Optional[float] = None
     route: List[str]
+    current_location: Optional[str] = None
     current_hub: Optional[str] = None
     current_lat: float
     current_lng: float
+    distance_to_stranded_km: Optional[float] = None
     next_hub: Optional[str] = None
     eta_next_hub: Optional[str] = None
     final_eta: Optional[str] = None

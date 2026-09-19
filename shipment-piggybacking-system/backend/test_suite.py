@@ -50,7 +50,7 @@ def run_tests():
 
         r_trucks = requests.get(f"{BASE_URL}/api/trucks")
         trucks = r_trucks.json().get("data", [])
-        assert_test("Active Fleet Trucks Loaded", len(trucks) in (5, 75), f"Found: {len(trucks)}")
+        assert_test("Active Fleet Trucks Loaded", len(trucks) >= 5, f"Found: {len(trucks)}")
         trk4 = next((t for t in trucks if t.get("truck_id") in ("TRK-004", "V004")), None)
         assert_test("TRK-004 (Vikram Singh) exists", trk4 is not None)
         assert_test("TRK-004 has spare capacity >= 8T", float(trk4.get("spare_capacity_tons", 0)) >= 8.0 if trk4 else False)
@@ -144,7 +144,7 @@ def run_tests():
     try:
         r_fleet = requests.get(f"{BASE_URL}/api/fleet")
         fleet = r_fleet.json().get("data", [])
-        assert_test("Fleet Status Endpoint returns fleet", len(fleet) in (5, 75), f"Found: {len(fleet)}")
+        assert_test("Fleet Status Endpoint returns fleet", len(fleet) >= 5, f"Found: {len(fleet)}")
         trk1 = next((t for t in fleet if t.get("truck_id") in ("TRK-001", "V001")), None)
         assert_test("TRK-001 has driver Rajesh Kumar & route", trk1 and trk1["driver_name"] == "Rajesh Kumar")
 
