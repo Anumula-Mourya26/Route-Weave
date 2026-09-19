@@ -3,7 +3,7 @@
 
 > **Autonomous Disruption Mitigation & Multi-Objective Linehaul Optimization for Enterprise Logistics**  
 > *Target Corridor:* Telangana Inter-District Highway Grid (NH 163, NH 65, NH 44, SH 1, SH 24)  
-> *Team:* Malwifi · Autonomous Logistics Engineering
+> *Team:* Route Weave · Autonomous Logistics Engineering
 
 ---
 

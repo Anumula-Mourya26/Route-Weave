@@ -1,7 +1,7 @@
 # SH-205 Intelligent Shipment Piggybacking System — Hard Pivot & Final Submission
 
-## Executive Summary: Team Malwifi Hackathon Restructuring & UI Overhaul
-We have executed the hard pivot, full architectural restructuring, and complete modern UI/UX overhaul of **SH-205: Intelligent Shipment Piggybacking System** for Team Malwifi's final hackathon submission. 
+## Executive Summary: Route Weave Hackathon Restructuring & UI Overhaul
+We have executed the hard pivot, full architectural restructuring, and complete modern UI/UX overhaul of **SH-205: Intelligent Shipment Piggybacking System** for Route Weave's final hackathon submission. 
 
 The frontend has been completely redesigned to match the enterprise "bento-box" aesthetic from the reference designs (`image_16bc07.png` and `image_16bc5e.jpg`), using a clean off-white palette (`bg-gray-50`, `bg-white`), vibrant AI purple accents (`bg-purple-600`), soft shadows, rounded corners (`rounded-2xl`), a persistent left-hand sidebar navigation, and modular bento grids strictly bound to our existing schemas from `dataset_soft_hack.txt`, `truck_routes.json`, and `Production_hubs.json`.
 

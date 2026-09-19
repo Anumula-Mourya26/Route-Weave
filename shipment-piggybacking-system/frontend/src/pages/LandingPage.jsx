@@ -51,7 +51,7 @@ export default function LandingPage() {
         <header className="w-full flex items-center justify-between pb-8 border-b border-neutral-200">
           <div className="flex items-center gap-3">
             <span className="text-base font-bold tracking-tight text-black">
-              MALWIFI Logistics
+              Route Weave
             </span>
             <span className="text-xs text-neutral-500 border border-neutral-200 px-2 py-0.5 rounded-full">
               System v3.0
@@ -75,11 +75,11 @@ export default function LandingPage() {
           <div className="lg:col-span-7 space-y-6 animate-fade-in-up">
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-black leading-[1.05]">
-              Zero Stranded Cargo.
+              Route Weave
             </h1>
 
             <p className="text-lg sm:text-xl text-neutral-600 font-normal leading-relaxed max-w-xl">
-              Autonomous shipment piggybacking and spare capacity recovery for modern supply chains. Reroute off-course freight with Google OR-Tools in under two seconds.
+              Intelligent Shipment Piggybacking
             </p>
 
             <div className="pt-4 flex flex-col sm:flex-row items-start sm:items-center gap-5">
@@ -92,7 +92,7 @@ export default function LandingPage() {
               </button>
 
               <span className="text-xs text-neutral-500 font-medium">
-                Authorized Dispatcher Portal · Malwifi Auth Required
+                Authorized Dispatcher Portal · Route Weave Auth Required
               </span>
             </div>
 
@@ -473,7 +473,7 @@ export default function LandingPage() {
 
           <div className="pt-12 border-t border-neutral-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-neutral-500">
             <div>
-              SH-205 Intelligent Shipment Piggybacking · Team Malwifi
+              SH-205 Intelligent Shipment Piggybacking · Route Weave
             </div>
             <div>
               Telangana Logistics Network · Production Edition

@@ -63,7 +63,7 @@ export default function PresentationPanel({ onClose, onLaunchLiveDemo }) {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-gray-100 pb-5">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold text-purple-600 uppercase tracking-wider">
-            <Presentation className="w-4 h-4" /> Team Malwifi · Jury Pitch Deck
+            <Presentation className="w-4 h-4" /> Route Weave · Jury Pitch Deck
           </div>
           <h2 className="text-xl font-black text-gray-900 mt-1">SH-205: Intelligent Shipment Piggybacking</h2>
         </div>

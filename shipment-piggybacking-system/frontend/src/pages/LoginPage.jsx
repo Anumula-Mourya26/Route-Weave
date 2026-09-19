@@ -41,7 +41,7 @@ export default function LoginPage() {
           <span>Return to Index</span>
         </button>
         <span className="text-xs font-medium text-gray-400">
-          Malwifi Gateway · SH-205
+          Route Weave Gateway · SH-205
         </span>
       </div>
 
@@ -83,7 +83,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@malwifi.com"
+              placeholder="admin@routeweave.com"
               required
               disabled={loading}
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition"
@@ -127,7 +127,7 @@ export default function LoginPage() {
 
       {/* Minimal Footer */}
       <div className="w-full max-w-md pt-5 border-t border-gray-100 text-center text-xs text-gray-400">
-        Malwifi Route Optimization · Telangana Corridor
+        Route Weave Route Optimization · Telangana Corridor
       </div>
 
     </div>

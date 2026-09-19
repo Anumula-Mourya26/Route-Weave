@@ -2,17 +2,17 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
-const STORAGE_KEY_TOKEN = 'malwifi_auth_token';
-const STORAGE_KEY_USER = 'malwifi_auth_user';
+const STORAGE_KEY_TOKEN = 'routeweave_auth_token';
+const STORAGE_KEY_USER = 'routeweave_auth_user';
 
 export const DEMO_CREDENTIALS = {
   ADMIN: {
-    email: 'admin@malwifi.com',
+    email: 'admin@routeweave.com',
     password: 'admin123',
     roleLabel: 'Logistics Administrator'
   },
   DISPATCHER: {
-    email: 'admin@malwifi.com',
+    email: 'admin@routeweave.com',
     password: 'admin123',
     roleLabel: 'Route Dispatcher'
   }
@@ -63,7 +63,7 @@ export function AuthProvider({ children }) {
 
   /**
    * Hardcoded Authentication Gate
-   * Strictly accepts only admin@malwifi.com / admin123
+   * Strictly accepts only admin@routeweave.com / admin123
    */
   const login = async (email, password) => {
     setLoading(true);
@@ -75,15 +75,15 @@ export function AuthProvider({ children }) {
     const cleanEmail = (email || '').trim().toLowerCase();
     const cleanPassword = (password || '').trim();
 
-    if (cleanEmail === 'admin@malwifi.com' && cleanPassword === 'admin123') {
+    if (cleanEmail === 'admin@routeweave.com' && cleanPassword === 'admin123') {
       const authUser = {
-        id: 'malwifi_admin_01',
-        name: 'Malwifi Admin',
-        email: 'admin@malwifi.com',
+        id: 'routeweave_admin_01',
+        name: 'Route Weave Admin',
+        email: 'admin@routeweave.com',
         role: 'admin',
         roleLabel: 'Central Route Controller'
       };
-      const authToken = 'session_malwifi_auth_' + Date.now();
+      const authToken = 'session_routeweave_auth_' + Date.now();
 
       setToken(authToken);
       setUser(authUser);

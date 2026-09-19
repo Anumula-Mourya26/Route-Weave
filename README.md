@@ -116,4 +116,4 @@ npm run dev -- --port 5173
 ---
 
 ## 👥 Authors
-* **Team Malwifi** · *Autonomous Linehaul Logistics Engineering*
+* **Route Weave** · *Autonomous Linehaul Logistics Engineering*
