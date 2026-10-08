@@ -13,6 +13,7 @@
 
 ---
 
+
 ## 🚀 Key Highlights
 
 * **Autonomous Recovery in &lt; 30 ms:** Deterministic Google OR-Tools CVRPTW solver matches stranded cargo with active linehaul trucks with unutilized spare capacity.
